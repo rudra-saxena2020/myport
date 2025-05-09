@@ -1,0 +1,4 @@
+<FilesMatch "\.(mp4|mov|avi|webm)$">
+  Header set Content-Disposition "inline"
+  Header set X-Robots-Tag "noindex, nofollow"
+</FilesMatch>
