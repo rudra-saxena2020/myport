@@ -41,51 +41,37 @@
  <body class="flex flex-col min-h-screen">
   <header class="bg-[#1a122f] border-b border-[#2a214a]">
    <nav class="max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8 h-16">
-    <!-- Add this inside your header or nav section -->
-<header class="flex items-center p-4 shadow-md ">
-  <a href="/" class="flex items-center space-x-2">
-    <img src="/images/1000187931.png" alt="Brand Logo" class="h-10 w-auto" style="height: 85px ; padding-top: 15; padding-bottom: 15;"/>
-  </a>
-</header>
-
-    <ul class="flex space-x-8 text-xs font-montserrat uppercase text-[#d1d1d1] tracking-widest">
-     <li>
-      <a class="relative text-[#3ad6a0] font-semibold after:absolute after:-bottom-1 after:left-0 after:w-full after:h-[2px] after:bg-[#3ad6a0] after:rounded" href="#">
-       Home
-      </a>
-     </li>
-     <li>
-      <a class="hover:text-[#3ad6a0]" href="#">
-       About Me
-      </a>
-     </li>
-     <li>
-      <a class="hover:text-[#3ad6a0]" href="#">
-       Portfolio
-      </a>
-     </li>
-     <li>
-      <a class="hover:text-[#3ad6a0]" href="#">
-       Contact
-      </a>
-     </li>
-    </ul>
-    <ul class="flex space-x-4 text-[#d1d1d1] text-lg">
-     <li>
-      <a aria-label="Instagram" class="hover:text-[#3ad6a0]" href="#">
-       <i class="fab fa-instagram">
-       </i>
-      </a>
-     </li>
-     <li>
-      <a aria-label="YouTube" class="hover:text-[#3ad6a0]" href="#">
-       <i class="fab fa-youtube">
-       </i>
-      </a>
-     </li>
+    <a href="/" class="flex items-center space-x-2">
+      <img src="/images/1000187931.png" alt="Brand Logo" class="h-10 w-auto" />
+    </a>
+    <button id="menu-toggle" class="sm:hidden text-[#d1d1d1] text-2xl focus:outline-none">
+      <i class="fas fa-bars"></i>
+    </button>
+    <ul id="menu" class="hidden sm:flex space-x-8 text-xs font-montserrat uppercase text-[#d1d1d1] tracking-widest">
+      <li>
+        <a class="relative text-[#3ad6a0] font-semibold after:absolute after:-bottom-1 after:left-0 after:w-full after:h-[2px] after:bg-[#3ad6a0] after:rounded" href="#">
+          Home
+        </a>
+      </li>
+      <li>
+        <a class="hover:text-[#3ad6a0]" href="#">
+          About Me
+        </a>
+      </li>
+      <li>
+        <a class="hover:text-[#3ad6a0]" href="#">
+          Portfolio
+        </a>
+      </li>
+      <li>
+        <a class="hover:text-[#3ad6a0]" href="#">
+          Contact
+        </a>
+      </li>
     </ul>
    </nav>
   </header>
+
   <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-20">
    <section class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
     <div>
@@ -385,6 +371,29 @@
  </body>
  <script>
   document.addEventListener('contextmenu', event => event.preventDefault());
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const menuToggle = document.getElementById("menu-toggle");
+    const menu = document.getElementById("menu");
+
+    menuToggle.addEventListener("click", () => {
+      menu.classList.toggle("hidden");
+      menu.classList.toggle("flex");
+      menu.classList.toggle("flex-col");
+      menu.classList.toggle("absolute");
+      menu.classList.toggle("top-16");
+      menu.classList.toggle("left-0");
+      menu.classList.toggle("bg-[#1a122f]");
+      menu.classList.toggle("w-full");
+      menu.classList.toggle("p-4");
+
+      // Add styling for menu items in mobile view
+      const menuItems = menu.querySelectorAll("li a");
+      menuItems.forEach((item) => {
+        item.classList.add("block", "py-2", "text-center", "text-[#d1d1d1]", "hover:text-[#3ad6a0]");
+      });
+    });
+  });
 </script>
 
 </html>
