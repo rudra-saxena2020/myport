@@ -1,399 +1,975 @@
+<!DOCTYPE html>
 <html lang="en">
  <head>
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1" name="viewport"/>
-  <link rel="icon" type="image/png" href="/images/1000187931.png">
-
   <title>
-   Editopia Studio
+    Editopia Studio
   </title>
   <script src="https://cdn.tailwindcss.com">
   </script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&amp;family=Open+Sans:wght@300;400&amp;display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="safe.htaccess">
- <style>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&amp;family=Roboto+Condensed&amp;display=swap" rel="stylesheet"/>
+  <style>
    body {
-      font-family: 'Open Sans', sans-serif;
-      background-color: #1a122f;
-      color: #d1d1d1;
+      font-family: 'Roboto Condensed', sans-serif;
+      
+      color: white;
+      background-image: url('/myport/images/banner-bg.webp');
+    }
+    .font-playfair {
+      font-family: 'Playfair Display', serif;
     }
     .font-montserrat {
       font-family: 'Montserrat', sans-serif;
     }
+    /* Custom scrollbar for vertical social icons */
+    .scrollbar-hide::-webkit-scrollbar {
+      display: none;
+    }
+    .scrollbar-hide {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
   </style>
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const videos = document.querySelectorAll("video");
-
-      videos.forEach((video) => {
-        video.addEventListener("play", () => {
-          videos.forEach((otherVideo) => {
-            if (otherVideo !== video) {
-              otherVideo.pause();
-            }
-          });
-        });
-      });
-    });
-  </script>
  </head>
- <body class="flex flex-col min-h-screen">
-  <header class="bg-[#1a122f] border-b border-[#2a214a]">
-   <nav class="max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8 h-16">
-    <a href="/" class="flex items-center space-x-2">
-      <img src="/images/1000187931.png" alt="Brand Logo" class="h-10 w-auto" />
-    </a>
-    <button id="menu-toggle" class="sm:hidden text-[#d1d1d1] text-2xl focus:outline-none">
-      <i class="fas fa-bars"></i>
+ <body class="relative overflow-x-hidden">
+  <!-- Top social vertical icons right side -->
+  <div class="fixed top-1/2 right-0 z-50 flex flex-col space-y-3 text-white text-xs select-none">
+   <a class="flex items-center justify-center w-6 h-6 bg-[#1a1a1a] rounded-l-full hover:bg-[#3b82f6] transition" href="#">
+    <i class="fab fa-facebook-f">
+    </i>
+   </a>
+   <a class="flex items-center justify-center w-6 h-6 bg-[#1a1a1a] rounded-l-full hover:bg-[#3b82f6] transition" href="#">
+    <i class="fab fa-twitter">
+    </i>
+   </a>
+   <a class="flex items-center justify-center w-6 h-6 bg-[#1a1a1a] rounded-l-full hover:bg-[#3b82f6] transition" href="#">
+    <i class="fab fa-linkedin-in">
+    </i>
+   </a>
+  </div>
+  <!-- Navbar -->
+  <nav class="flex items-center justify-between px-6 py-4 max-w-[1280px] mx-auto">
+   <div class="flex items-center space-x-2">
+    <img src="/myport/images/1000187931.png " alt="Logo" class="w-8 h-8 object-cover">
+    <span class="text-white font-playfair text-lg font-bold">
+     Editopia Studio
+    </span>
+   </div>
+   <ul class="hidden md:flex space-x-8 text-xs font-semibold text-white/80">
+    <li>
+     <a class="hover:text-white" href="#">
+      VIDEO EDITING
+     </a>
+    </li>
+    <li>
+     <a class="hover:text-white" href="#">
+      MARKETING VIDEO
+     </a>
+    </li>
+    <li>
+     <a class="hover:text-white" href="#">
+      EXPLAINER VIDEO
+     </a>
+    </li>
+    <li>
+     <a class="hover:text-white" href="#">
+      ABOUT US
+     </a>
+    </li>
+   </ul>
+   <div class="hidden md:flex items-center space-x-4">
+    <button class="text-xs font-semibold border border-[#ff3b3b] text-[#ff3b3b] rounded-full px-4 py-1 hover:bg-[#ff3b3b] hover:text-white transition">
+     GET FREE TRIAL
     </button>
-    <ul id="menu" class="hidden sm:flex space-x-8 text-xs font-montserrat uppercase text-[#d1d1d1] tracking-widest">
-      <li>
-        <a class="relative text-[#3ad6a0] font-semibold after:absolute after:-bottom-1 after:left-0 after:w-full after:h-[2px] after:bg-[#3ad6a0] after:rounded" href="#">
-          Home
-        </a>
-      </li>
-      <li>
-        <a class="hover:text-[#3ad6a0]" href="#">
-          About Me
-        </a>
-      </li>
-      <li>
-        <a class="hover:text-[#3ad6a0]" href="#">
-          Portfolio
-        </a>
-      </li>
-      <li>
-        <a class="hover:text-[#3ad6a0]" href="#">
-          Contact
-        </a>
-      </li>
-    </ul>
-   </nav>
-  </header>
-
-  <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-20">
-   <section class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-    <div>
-     <h1 class="text-white font-montserrat font-bold text-2xl sm:text-3xl mb-2">
-      Rudra Saxena
+    <button class="text-xs font-semibold border border-white text-white rounded-full px-4 py-1 hover:bg-white hover:text-black transition" onclick="window.location.href='/myport/Portfolio.html'">
+     PORTFOLIO
+    </button>
+    <button aria-label="Search" class="text-white hover:text-[#ff3b3b] transition">
+     <i class="fas fa-search">
+     </i>
+    </button>
+   </div>
+   <!-- Mobile menu button -->
+   <button aria-label="Open menu" class="md:hidden text-white hover:text-[#ff3b3b] transition" id="mobile-menu-button">
+    <i class="fas fa-bars">
+    </i>
+   </button>
+  </nav>
+  <!-- Mobile menu -->
+  <div class="hidden fixed inset-0 bg-black bg-opacity-95 z-40 flex flex-col p-6 space-y-6 text-white text-lg font-semibold" id="mobile-menu">
+   <button aria-label="Close menu" class="self-end text-white hover:text-[#ff3b3b] transition" id="mobile-menu-close">
+    <i class="fas fa-times">
+    </i>
+   </button>
+   <a class="hover:text-[#ff3b3b]" href="#">
+    VIDEO EDITING
+   </a>
+   <a class="hover:text-[#ff3b3b]" href="#">
+    MARKETING VIDEO
+   </a>
+   <a class="hover:text-[#ff3b3b]" href="#">
+    EXPLAINER VIDEO
+   </a>
+   <a class="hover:text-[#ff3b3b]" href="#">
+    ABOUT US
+   </a>
+   <div class="flex space-x-4 mt-auto">
+    <button class="text-xs font-semibold border border-[#ff3b3b] text-[#ff3b3b] rounded-full px-4 py-1 hover:bg-[#ff3b3b] hover:text-white transition">
+     GET FREE TRIAL
+    </button>
+    <button class="text-xs font-semibold border border-white text-white rounded-full px-4 py-1 hover:bg-white hover:text-black transition" onclick="window.location.href='/myport/Portfolio.html'">
+     PORTFOLIO
+    </button>
+   </div>
+  </div>
+  <!-- Hero Section -->
+  <section class="relative max-w-[1280px] mx-auto px-6 pt-10 md:pt-20 pb-20">
+   <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+    <div class="md:col-span-6 space-y-4">
+     <h1 class="font-playfair text-white text-3xl sm:text-4xl md:text-5xl leading-[1.1] tracking-wide">
+      PROFESSIONAL
+      <br/>
+      VIDEO
+      <span class="text-white/30 line-through">
+       EDITING
+      </span>
+      <br/>
+      SERVICES FOR YOUR
+      <br/>
+      BUSINESS
      </h1>
-     <h2 class="text-[#3ad6a0] font-montserrat font-semibold text-xl sm:text-xl mb-6">
-      Video Editor
-         </h2>
-     <ul class="space-y-2 text-xs sm:text-sm text-[#a3a3a3] font-semibold">
-      <li class="flex items-center space-x-2">
-       <span class="block w-10 h-[3px] bg-[#3ad6a0]">
-       </span>
-       <span>
-        🎯 Viral Reels & YouTube Shorts
-       </span>
-      </li>
-      <li class="flex items-center space-x-2">
-       <span class="block w-10 h-[3px] bg-[#a3a3a3]">
-       </span>
-       <span>
-        🎯 Viral Reels & YouTube Shorts
-       </span>
-      </li>
-      <li class="flex items-center space-x-2">
-       <span class="block w-10 h-[3px] bg-[#a3a3a3]">
-       </span>
-       <span>
-        🎶 Music & Cinematic Edits
-       </span>
-      </li>
-      <li class="flex items-center space-x-2">
-       <span class="block w-10 h-[3px] bg-[#a3a3a3]">
-       </span>
-       <span>
-        🎮 Gaming Montages & Trailers
-       </span>
-      </li>
-      <li class="flex items-center space-x-2">
-       <span class="block w-10 h-[3px] bg-[#a3a3a3]">
-       </span>
-       <span>
-        📢 Ads & Commercial Promos
-       </span>
-      </li>
-     </ul>
-    </div>
-    <div class="relative max-w-md mx-auto md:mx-0">
-     <p class="text-[9px] text-[#a3a3a3] uppercase mb-1 text-center md:text-left font-semibold tracking-widest">
-      PORTFOLIO SHOWREEL
+     <p class="text-xs text-white/60 max-w-[320px]">
+      We are a full-service video editing company that helps businesses
+          create professional videos that engage and convert.
      </p>
-     <div class="relative rounded-md shadow-lg overflow-hidden border border-[#3ad6a0]">
-      <video src="/videos/Show Reel 3.mp4" controls controlsList="nodownload" width="100%" muted controls controlsList="nodownload" width="100%" mutedList="nodownload" width="100%" muted></video>
-       </i>
+     <div class="flex space-x-4">
+      <button class="bg-[#ff3b3b] text-white text-xs font-semibold rounded-full px-5 py-1 hover:bg-[#e02e2e] transition">
+       GET FREE TRIAL
       </button>
-      <div class="absolute bottom-0 left-0 w-full h-1 bg-[#3ad6a0]">
+      <button class="border border-[#ff3b3b] text-[#ff3b3b] text-xs font-semibold rounded-full px-5 py-1 hover:bg-[#ff3b3b] hover:text-white transition" onclick="window.location.href='/myport/Portfolio.html'">
+       PORTFOLIO
+      </button>
+     </div>
+     <div class="flex space-x-6 mt-6 text-white/70 text-xs">
+      <div class="flex items-center space-x-2">
+       <i class="fas fa-play-circle">
+       </i>
+       <span>
+        24/7 SUPPORT
+       </span>
       </div>
-      <div class="absolute bottom-1 right-2 text-[10px] text-white/80 font-montserrat font-semibold">
+      <div class="flex items-center space-x-2">
+       <i class="fas fa-headset">
+       </i>
+       <span>
+        DEDICATED TEAM
+       </span>
+      </div>
+      <div class="flex items-center space-x-2">
+       <i class="fas fa-lock">
+       </i>
+       <span>
+        SECURE PAYMENT
+       </span>
+      </div>
+      <div class="flex items-center space-x-2">
+       <i class="fas fa-shield-alt">
+       </i>
+       <span>
+        QUALITY GUARANTEE
+       </span>
+      </div>
+     </div>
+    </div>
+    <div class="md:col-span-6 flex justify-center md:justify-end">
+     <div class="relative max-w-md w-full">
+      <p class="text-[9px] text-[#a3a3a3] uppercase mb-1 text-center md:text-left font-semibold tracking-widest">
+       PORTFOLIO SHOWREEL
+      </p>
+      <div class="relative rounded-md shadow-lg overflow-hidden border border-[#ff3b3b]">
+       <video src="/myport/videos/Show Reel 3.mp4" controls controlsList="nodownload" width="100%" muted></video>
+       <div class="absolute bottom-0 left-0 w-full h-1 bg-[#ff3b3b
+       
+       ]">
+       </div>
+       <div class="absolute bottom-1 right-2 text-[10px] text-white/80 font-montserrat font-semibold">
        0:17
       </div>
       <div class="absolute bottom-6 left-3 text-white text-xs font-montserrat font-semibold">
-      
        <span class="text-[8px] font-normal">
-        
        </span>
       </div>
      </div>
     </div>
-   </section>
-   <section class="border-t border-[#3a3a3a] pt-8 mb-12 max-w-5xl mx-auto">
-    <h3 class="text-xs text-[#a3a3a3] font-montserrat font-semibold uppercase tracking-widest mb-6 text-center">
-     WHAT I DO
+   </div>
+  </section>
+  <!-- Stats Section -->
+  <section class="max-w-[1280px] mx-auto px-6 py-10 border-t border-white/10">
+   <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 text-center text-white font-semibold">
+    <div>
+     <div class="text-[#ffb300] text-2xl sm:text-3xl font-bold">
+      5+
+     </div>
+     <div class="text-xs sm:text-sm mt-1">
+      YEARS EXPERIENCE
+     </div>
+    </div>
+    <div>
+     <div class="text-[#ffb300] text-2xl sm:text-3xl font-bold">
+      200+
+     </div>
+     <div class="text-xs sm:text-sm mt-1">
+      SATISFIED CLIENTS
+     </div>
+    </div>
+    <div>
+     <div class="text-[#ffb300] text-2xl sm:text-3xl font-bold">
+      2
+     </div>
+     <div class="text-xs sm:text-sm mt-1">
+      AWARDS WON
+     </div>
+    </div>
+    <div>
+     <div class="text-[#ffb300] text-2xl sm:text-3xl font-bold">
+      500+
+     </div>
+     <div class="text-xs sm:text-sm mt-1">
+      PROJECTS DONE
+     </div>
+    </div>
+   </div>
+  </section>
+  <!-- Unlock finesse section -->
+  <section class="max-w-[1280px] mx-auto px-6 py-10">
+   <h2 class="text-center text-white text-xs sm:text-sm font-semibold mb-8 uppercase">
+    UNLOCK FINESSE WITH OUR
+    <br/>
+    VIDEO EDITING AND POST-PRODUCTION SERVICES
+   </h2>
+   <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-[900px] mx-auto text-white text-xs sm:text-sm">
+    <div class="bg-[#1a1a1a] rounded-lg p-4 space-y-2">
+     <img alt="Picture service showing a person filming a desert scene with a drone" class="rounded" height="180" src="https://storage.googleapis.com/a1aa/image/909d089f-fe0f-4ab9-6106-fafb15a23ec7.jpg" width="300"/>
+     <ul class="list-disc list-inside space-y-1">
+      <li>
+       Color Correction
+      </li>
+      <li>
+       Video Cutting
+      </li>
+      <li>
+       Transitions
+      </li>
+      <li>
+       Motion Graphics
+      </li>
+     </ul>
+     <div class="text-center uppercase text-xs font-semibold mt-2">
+      PICTURE SERVICE
+     </div>
+    </div>
+    <div class="bg-[#1a1a1a] rounded-lg p-4 space-y-2">
+     <img alt="Visual effects service showing a person with colorful lighting and effects" class="rounded" height="180" src="https://storage.googleapis.com/a1aa/image/66fa5b30-aa1a-4a8b-9fa6-df8261a0c03f.jpg" width="300"/>
+     <ul class="list-disc list-inside space-y-1">
+      <li>
+       CGI
+      </li>
+      <li>
+       Compositing
+      </li>
+      <li>
+       Animation
+      </li>
+      <li>
+       Green Screen
+      </li>
+     </ul>
+     <div class="text-center uppercase text-xs font-semibold mt-2">
+      VISUAL EFFECTS
+     </div>
+    </div>
+    <div class="bg-[#1a1a1a] rounded-lg p-4 space-y-2">
+     <img alt="Audio service showing a woman with headphones and microphone" class="rounded" height="180" src="https://storage.googleapis.com/a1aa/image/7bd69c33-5081-4c26-75c0-cce6c756af58.jpg" width="300"/>
+     <ul class="list-disc list-inside space-y-1">
+      <li>
+       Sound Editing
+      </li>
+      <li>
+       Voice Over
+      </li>
+      <li>
+       Mixing
+      </li>
+      <li>
+       Noise Reduction
+      </li>
+     </ul>
+     <div class="text-center uppercase text-xs font-semibold mt-2">
+      AUDIO SERVICE
+     </div>
+    </div>
+   </div>
+  </section>
+  <!-- Services Provided by Us -->
+  <section class="max-w-[1280px] mx-auto px-6 py-10">
+   <h3 class="text-center text-white text-xs sm:text-sm font-semibold uppercase mb-8">
+    SERVICES PROVIDED BY US
+   </h3>
+   <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-4 text-white text-xs font-semibold">
+    <div class="space-y-1">
+     <img alt="Video production service showing a man filming a scene with a camera" class="rounded" height="100" src="https://storage.googleapis.com/a1aa/image/08fc5bb8-fb5b-40a9-8364-331058666d2b.jpg" width="150"/>
+     <div class="text-center">
+      VIDEO PRODUCTION
+     </div>
+    </div>
+    <div class="space-y-1">
+     <img alt="Video editing service showing a person editing video on a computer" class="rounded" height="100" src="https://storage.googleapis.com/a1aa/image/13a940f0-ac4f-4936-9d21-a686670527d6.jpg" width="150"/>
+     <div class="text-center">
+      VIDEO EDITING
+     </div>
+    </div>
+    <div class="space-y-1">
+     <img alt="Motion graphics service showing animated graphics on screen" class="rounded" height="100" src="https://storage.googleapis.com/a1aa/image/37d0d3e7-351b-43ac-46cb-0d916e971fe4.jpg" width="150"/>
+     <div class="text-center">
+      MOTION GRAPHICS
+     </div>
+    </div>
+    <div class="space-y-1">
+     <img alt="Color grading service showing color correction on video" class="rounded" height="100" src="https://storage.googleapis.com/a1aa/image/2b26d8cc-9102-4441-4987-77b78c1921c1.jpg" width="150"/>
+     <div class="text-center">
+      COLOR GRADING
+     </div>
+    </div>
+    <div class="space-y-1">
+     <img alt="Animation service showing animated character on screen" class="rounded" height="100" src="https://storage.googleapis.com/a1aa/image/7336a89e-2147-4a3d-9965-38caea2b9d33.jpg" width="150"/>
+     <div class="text-center">
+      ANIMATION
+     </div>
+    </div>
+    <div class="space-y-1">
+     <img alt="Audio editing service showing sound waveforms on screen" class="rounded" height="100" src="https://storage.googleapis.com/a1aa/image/abbcebd9-937f-488d-88a0-c2e11efebcfc.jpg" width="150"/>
+     <div class="text-center">
+      AUDIO EDITING
+     </div>
+    </div>
+    <div class="space-y-1">
+     <img alt="Script writing service showing a person writing on a notepad" class="rounded" height="100" src="https://storage.googleapis.com/a1aa/image/fbe06555-fe2f-4238-56a0-bdf0f0c5d509.jpg" width="150"/>
+     <div class="text-center">
+      SCRIPT WRITING
+     </div>
+    </div>
+    <div class="space-y-1">
+     <img alt="Voice over service showing a person speaking into a microphone" class="rounded" height="100" src="https://storage.googleapis.com/a1aa/image/a6ba76c1-719f-402a-9b80-8b4274bbb6bb.jpg" width="150"/>
+     <div class="text-center">
+      VOICE OVER
+     </div>
+    </div>
+    <div class="space-y-1">
+     <img alt="Live streaming service showing a camera and streaming setup" class="rounded" height="100" src="https://storage.googleapis.com/a1aa/image/3c786778-1e53-4029-ab40-b88331d15fb2.jpg" width="150"/>
+     <div class="text-center">
+      LIVE STREAMING
+     </div>
+    </div>
+    <div class="space-y-1">
+     <img alt="Marketing video service showing a person presenting marketing content" class="rounded" height="100" src="https://storage.googleapis.com/a1aa/image/c58a9205-b7f0-4199-b40b-aa551d06ff0a.jpg" width="150"/>
+     <div class="text-center">
+      MARKETING VIDEO
+     </div>
+    </div>
+    <div class="space-y-1">
+     <img alt="Explainer video service showing animated explainer video on screen" class="rounded" height="100" src="https://storage.googleapis.com/a1aa/image/c5978bf9-b081-4e09-d7ca-27b471d5df47.jpg" width="150"/>
+     <div class="text-center">
+      EXPLAINER VIDEO
+     </div>
+    </div>
+    <div class="space-y-1">
+     <img alt="Post production service showing video editing timeline on screen" class="rounded" height="100" src="https://storage.googleapis.com/a1aa/image/0e10f856-79fd-4855-9c33-702a58a11851.jpg" width="150"/>
+     <div class="text-center">
+      POST PRODUCTION
+     </div>
+    </div>
+    <div class="space-y-1">
+     <img alt="Drone filming service showing aerial drone shot" class="rounded" height="100" src="https://storage.googleapis.com/a1aa/image/ef708f9a-06c9-4f2b-9872-c8d6e327a77c.jpg" width="150"/>
+     <div class="text-center">
+      DRONE FILMING
+     </div>
+    </div>
+    <div class="space-y-1">
+     <img alt="Event coverage service showing a person filming an event" class="rounded" height="100" src="https://storage.googleapis.com/a1aa/image/2ed9a6b6-39a5-4f26-b9a8-d376c75632fa.jpg" width="150"/>
+     <div class="text-center">
+      EVENT COVERAGE
+     </div>
+    </div>
+    <div class="space-y-1">
+     <img alt="Training video service showing a person giving a training presentation" class="rounded" height="100" src="https://storage.googleapis.com/a1aa/image/292a06a5-0a19-4903-ca3a-197a78200bba.jpg" width="150"/>
+     <div class="text-center">
+      TRAINING VIDEO
+     </div>
+    </div>
+    <div class="space-y-1">
+     <img alt="Corporate video service showing a business meeting video" class="rounded" height="100" src="https://storage.googleapis.com/a1aa/image/9f2050b9-d1ed-44f9-29b9-a880c901692c.jpg" width="150"/>
+     <div class="text-center">
+      CORPORATE VIDEO
+     </div>
+    </div>
+    <div class="space-y-1">
+     <img alt="Social media video service showing a person filming for social media" class="rounded" height="100" src="https://storage.googleapis.com/a1aa/image/6a6196d8-f940-41d5-1672-17717bb9f699.jpg" width="150"/>
+     <div class="text-center">
+      SOCIAL MEDIA VIDEO
+     </div>
+    </div>
+    <div class="space-y-1">
+     <img alt="Product video service showing a product being filmed" class="rounded" height="100" src="https://storage.googleapis.com/a1aa/image/e0f5eece-c7c0-4850-7c2e-3cfe23b1cc89.jpg" width="150"/>
+     <div class="text-center">
+      PRODUCT VIDEO
+     </div>
+    </div>
+    <div class="space-y-1">
+     <img alt="Testimonial video service showing a person giving a testimonial" class="rounded" height="100" src="https://storage.googleapis.com/a1aa/image/a03ec937-f2d3-4788-7ce5-25250c5af6a2.jpg" width="150"/>
+     <div class="text-center">
+      TESTIMONIAL VIDEO
+     </div>
+    </div>
+    <div class="space-y-1">
+     <img alt="Animation video service showing animated characters" class="rounded" height="100" src="https://storage.googleapis.com/a1aa/image/34f1ee6f-59c6-46f1-f648-6556242f7448.jpg" width="150"/>
+     <div class="text-center">
+      ANIMATION VIDEO
+     </div>
+    </div>
+    <div class="space-y-1">
+     <img alt="Explainer animation service showing animated explainer video" class="rounded" height="100" src="https://storage.googleapis.com/a1aa/image/951b1c5a-e0c8-4dd5-8882-a9250c282c17.jpg" width="150"/>
+     <div class="text-center">
+      EXPLAINER ANIMATION
+     </div>
+    </div>
+    <div class="space-y-1">
+     <img alt="Video marketing service showing marketing video on screen" class="rounded" height="100" src="https://storage.googleapis.com/a1aa/image/9f184c45-7021-46a3-ef48-81a19ddd2cc0.jpg" width="150"/>
+     <div class="text-center">
+      VIDEO MARKETING
+     </div>
+    </div>
+    <div class="space-y-1">
+     <img alt="Video consulting service showing a person consulting on video project" class="rounded" height="100" src="https://storage.googleapis.com/a1aa/image/40f50e11-cb33-4596-a4ac-e85fc003f2bd.jpg" width="150"/>
+     <div class="text-center">
+      VIDEO CONSULTING
+     </div>
+    </div>
+    <div class="space-y-1">
+     <img alt="Video strategy service showing a person planning video strategy" class="rounded" height="100" src="https://storage.googleapis.com/a1aa/image/269a29e8-0e83-4782-01b5-ae022109f639.jpg" width="150"/>
+     <div class="text-center">
+      VIDEO STRATEGY
+     </div>
+    </div>
+    <div class="space-y-1">
+     <img alt="Video production consulting service showing a person consulting on production" class="rounded" height="100" src="https://storage.googleapis.com/a1aa/image/1b1537d5-b678-4c2c-208c-359e697de3d1.jpg" width="150"/>
+     <div class="text-center">
+      VIDEO PRODUCTION CONSULTING
+     </div>
+    </div>
+    <div class="space-y-1">
+     <img alt="Video editing consulting service showing a person consulting on editing" class="rounded" height="100" src="https://storage.googleapis.com/a1aa/image/65c7397c-aa2e-4dc1-7cec-464d90849ade.jpg" width="150"/>
+     <div class="text-center">
+      VIDEO EDITING CONSULTING
+     </div>
+    </div>
+    <div class="space-y-1">
+     <img alt="Video post production service showing video editing timeline" class="rounded" height="100" src="https://storage.googleapis.com/a1aa/image/2d2f96e4-339e-48fc-14e7-7af4b229640a.jpg" width="150"/>
+     <div class="text-center">
+      VIDEO POST PRODUCTION
+     </div>
+    </div>
+    <div class="space-y-1">
+     <img alt="Video animation consulting service showing animated video consulting" class="rounded" height="100" src="https://storage.googleapis.com/a1aa/image/09e25715-9455-41b4-f1d7-aa7c1e8bc75f.jpg" width="150"/>
+     <div class="text-center">
+      VIDEO ANIMATION CONSULTING
+     </div>
+    </div>
+    <div class="space-y-1">
+     <img alt="Video marketing consulting service showing marketing video consulting" class="rounded" height="100" src="https://storage.googleapis.com/a1aa/image/8854a552-33bc-4cb5-c627-178f0fc876cb.jpg" width="150"/>
+     <div class="text-center">
+      VIDEO MARKETING CONSULTING
+     </div>
+    </div>
+    <div class="space-y-1">
+     <img alt="Video training service showing a person training on video editing" class="rounded" height="100" src="https://storage.googleapis.com/a1aa/image/7ae1a202-4baf-424f-8f67-1797b8e1290e.jpg" width="150"/>
+     <div class="text-center">
+      VIDEO TRAINING
+     </div>
+    </div>
+    <div class="space-y-1">
+     <img alt="Video support service showing a person providing video support" class="rounded" height="100" src="https://storage.googleapis.com/a1aa/image/0b1eb255-30f9-486a-551b-9b042a341560.jpg" width="150"/>
+     <div class="text-center">
+      VIDEO SUPPORT
+     </div>
+    </div>
+    <div class="space-y-1">
+     <img alt="Video consulting services showing a person consulting on video" class="rounded" height="100" src="https://storage.googleapis.com/a1aa/image/0c205f60-077e-4dc6-cd88-0d17c96dfd0b.jpg" width="150"/>
+     <div class="text-center">
+      VIDEO CONSULTING SERVICES
+     </div>
+    </div>
+    <div class="space-y-1">
+     <img alt="Video editing services showing video editing on computer" class="rounded" height="100" src="https://storage.googleapis.com/a1aa/image/62cd55f5-adc6-4d90-e6c0-340030c8e9d4.jpg" width="150"/>
+     <div class="text-center">
+      VIDEO EDITING SERVICES
+     </div>
+    </div>
+    <div class="space-y-1">
+     <img alt="Video production services showing video production setup" class="rounded" height="100" src="https://storage.googleapis.com/a1aa/image/0e59594d-b147-494f-5276-ee0bab07d00a.jpg" width="150"/>
+     <div class="text-center">
+      VIDEO PRODUCTION SERVICES
+     </div>
+    </div>
+    <div class="space-y-1">
+     <img alt="Video marketing services showing marketing video on screen" class="rounded" height="100" src="https://storage.googleapis.com/a1aa/image/32e0d369-a381-4b13-b913-68cd061be4ad.jpg" width="150"/>
+     <div class="text-center">
+      VIDEO MARKETING SERVICES
+     </div>
+    </div>
+    <div class="space-y-1">
+     <img alt="Video animation services showing animated video" class="rounded" height="100" src="https://storage.googleapis.com/a1aa/image/7d7fb0d1-6698-4705-1aa9-d1a4a67060b0.jpg" width="150"/>
+     <div class="text-center">
+      VIDEO ANIMATION SERVICES
+     </div>
+    </div>
+    <div class="space-y-1">
+     <img alt="Video post production services showing video editing timeline" class="rounded" height="100" src="https://storage.googleapis.com/a1aa/image/3386bd14-bf1b-4f81-8a50-95ddb6e9b5d9.jpg" width="150"/>
+     <div class="text-center">
+      VIDEO POST PRODUCTION SERVICES
+     </div>
+    </div>
+    <div class="space-y-1">
+     <img alt="Video consulting services showing consulting on video" class="rounded" height="100" src="https://storage.googleapis.com/a1aa/image/3fe33e67-97bc-4014-780c-de6c5b65549d.jpg" width="150"/>
+     <div class="text-center">
+      VIDEO CONSULTING SERVICES
+     </div>
+    </div>
+    <div class="space-y-1">
+     <img alt="Video training services showing training on video editing" class="rounded" height="100" src="https://storage.googleapis.com/a1aa/image/abf7ded0-3a8d-4e2f-c882-213ea179597b.jpg" width="150"/>
+     <div class="text-center">
+      VIDEO TRAINING SERVICES
+     </div>
+    </div>
+    <div class="space-y-1">
+     <img alt="Video support services showing support on video editing" class="rounded" height="100" src="https://storage.googleapis.com/a1aa/image/d4d13310-0c95-4e88-51a4-f4487088a0aa.jpg" width="150"/>
+     <div class="text-center">
+      VIDEO SUPPORT SERVICES
+     </div>
+    </div>
+    <div class="space-y-1">
+     <img alt="Video editing portfolio showing video editing projects" class="rounded" height="100" src="https://storage.googleapis.com/a1aa/image/b03e2542-5789-4f24-8ed8-a2d115339981.jpg" width="150"/>
+     <div class="text-center">
+      VIDEO EDITING PORTFOLIO
+     </div>
+    </div>
+   </div>
+  </section>
+  <!-- Video Editing Service Process -->
+  <section class="max-w-[1280px] mx-auto px-6 py-20 relative">
+   <div class="absolute left-0 top-0 text-[5rem] font-playfair font-bold text-white/10 select-none leading-none">
+    EDITOPIA STUDIO
+   </div>
+   <div class="relative z-10 max-w-[700px] mx-auto text-center text-white">
+    <h3 class="text-lg font-semibold mb-10 uppercase">
+     VIDEO EDITING SERVICE PROCESS
     </h3>
-    <div class="grid grid-cols-1 sm:grid-cols-4 gap-6 text-[9px] text-[#a3a3a3] font-semibold text-center">
-     <div class="flex flex-col items-center space-y-2">
-      <i class="fas fa-play text-[#3ad6a0] text-xl">
-      </i>
-      <p>
-       SYNCING THE FOOTAGE WITH MUSIC AND AUDIO
-      </p>
-     </div>
-     <div class="flex flex-col items-center space-y-2">
-      <i class="fas fa-sliders-h text-[#3ad6a0] text-xl">
-      </i>
-      <p>
-       ADDING DYNAMIC TRANSITIONS AND MOTION GRAPHICS
-      </p>
-     </div>
-     <div class="flex flex-col items-center space-y-2">
-      <i class="fas fa-closed-captioning text-[#3ad6a0] text-xl">
-      </i>
-      <p>
-       SUBTITLING FOR MEDIA STREAMING PLATFORM
-      </p>
-     </div>
-     <div class="hidden sm:block">
-     </div>
-    </div>
-   </section>
-   <section class="max-w-5xl mx-auto mb-12">
-    <p class="text-[9px] text-[#a3a3a3] uppercase font-montserrat font-semibold tracking-widest mb-4 text-center">
-     MOVIE TRAILERS AND MAKING OF
-    </p>
-    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-     <div class="sm:col-span-2 space-y-4">
-      <div class="relative rounded-md overflow-hidden border border-[#3ad6a0]">
-        <video src="/videos/Faceless Niche.mp4" controls controlsList="nodownload" width="100%" muted controls controlsList="nodownload" width="100%" mutedList="nodownload" width="100%" muted></video>
-       <div class="absolute bottom-2 left-2 text-white text-xs font-montserrat font-semibold">
-        FACELESS NICHE
-       </div>
-      </div>
-      <div class="relative rounded-md overflow-hidden border border-[#3ad6a0]">
-        <video src="/videos/Best Edit 5.mp4" controls controlsList="nodownload" width="100%" muted></video>
-        <div class="absolute bottom-2 left-2 text-white text-xs font-montserrat font-semibold">
-        DARK EPIC EDIT
-       </div>
-      </div>
-      <div class="relative rounded-md overflow-hidden border border-[#3ad6a0]">
-        <video src="/videos/lv_0_20240526201212.mp4" controls controlsList="nodownload" width="100%" muted></video>  
-             <div class="absolute bottom-2 left-2 text-white text-xs font-montserrat font-semibold">
-        EPIC EMOTIONAL TRAILER
-       </div>
-      </div>
-      <div class="relative rounded-md overflow-hidden border border-[#3ad6a0]">
-        <video src="/videos/VID-20240605-WA0007.mp4" controls controlsList="nodownload" width="100%" muted></video>  
-       <div class="absolute bottom-2 left-2 text-white text-xs font-montserrat font-semibold">
-        NEW ON HBO MAX AND NETFLIX
-       </div>
-      </div>
-      <div class="relative rounded-md overflow-hidden border border-[#3ad6a0]">
-        <video src="/videos/Finance Sample.mp4" controls controlsList="nodownload" width="100%" muted></video>
-      </div>
-     </div>
-     <div class="space-y-4">
-      <div class="relative rounded-md overflow-hidden border border-[#3ad6a0]">
-        <video src="/videos/cashcow videos/c4.mp4" controls controlsList="nodownload" width="100%" muted></video>  
-      </div>
-      <div class="relative rounded-md overflow-hidden border border-[#3ad6a0]">
-        <video src="/videos/cashcow videos/c12.mp4" controls controlsList="nodownload" width="100%" muted></video>  
-      </div>
-      <div class="relative rounded-md overflow-hidden border border-[#3ad6a0]">
-        <video src="/videos/cashcow videos/c2.mp4" controls controlsList="nodownload" width="100%" muted></video>  
-      </div>
-      <div class="relative rounded-md overflow-hidden border border-[#3ad6a0]">
-        <video src="/videos/cashcow videos/c3.mp4" controls controlsList="nodownload" width="100%" muted></video>  
-      </div>
-      <div class="relative rounded-md overflow-hidden border border-[#3ad6a0]">
-        <video src="/videos/reels/Realtor sample 1.mp4" controls controlsList="nodownload" width="100%" muted></video>  
-      </div>
-      <div class="relative rounded-md overflow-hidden border border-[#3ad6a0]">
-        <video src="/videos/reels/r15.mp4" controls controlsList="nodownload" width="100%" muted></video>  
-      </div>
-     </div>
-    </div>
-   </section>
-   <section class="max-w-5xl mx-auto mb-12 grid grid-cols-1 sm:grid-cols-2 gap-8">
-    <div>
-     <p class="text-[9px] text-[#a3a3a3] uppercase font-montserrat font-semibold tracking-widest mb-4 text-center sm:text-left">
-      GAMING
-      <span class="text-white">
-       HIGHLIGHTS
+    <div class="flex justify-between items-center text-white/90 font-bold text-4xl sm:text-5xl max-w-[600px] mx-auto">
+     <div class="flex flex-col items-center space-y-1">
+      <span>
+       1
       </span>
-     </p>
-     <div class="space-y-4">
-      <video src="/videos/reels/r1.mp4" controls controlsList="nodownload" width="100%" muted class="w-full h-auto rounded border border-[#3ad6a0]"></video>  
-      <video src="/videos/reels/r2.mp4" controls controlsList="nodownload" width="100%" muted class="w-full h-auto rounded border border-[#3ad6a0]"></video>  
-      <video src="/videos/reels/r3.mp4" controls controlsList="nodownload" width="100%" muted class="w-full h-auto rounded border border-[#3ad6a0]"></video>  
-      <video src="/videos/reels/r4.mp4" controls controlsList="nodownload" width="100%" muted class="w-full h-auto rounded border border-[#3ad6a0]"></video>  
-
-    </div>
-    </div>
-    <div>
-     <p class="text-[9px] text-[#a3a3a3] uppercase font-montserrat font-semibold tracking-widest mb-4 text-center sm:text-left">
-      MUSIC VIDEOS
-     </p>
-     <div class="space-y-4">
-      <video src="/videos/reels/r5.mp4" controls controlsList="nodownload" width="100%" muted class="w-full h-auto rounded border border-[#3ad6a0]"></video>  
-      <video src="/videos/reels/r6.mp4" controls controlsList="nodownload" width="100%" muted class="w-full h-auto rounded border border-[#3ad6a0]"></video>  
-      <video src="/videos/reels/r7.mp4" controls controlsList="nodownload" width="100%" muted class="w-full h-auto rounded border border-[#3ad6a0]"></video>  
-      <video src="/videos/reels/r17.mp4" controls controlsList="nodownload" width="100%" muted class="w-full h-auto rounded border border-[#3ad6a0]"></video>  
+      <span class="text-xs font-normal text-white/70 max-w-[80px]">
+       Upload your raw footage
+      </span>
+     </div>
+     <div class="flex flex-col items-center space-y-1">
+      <span>
+       2
+      </span>
+      <span class="text-xs font-normal text-white/70 max-w-[80px]">
+       We edit and enhance
+      </span>
+     </div>
+     <div class="flex flex-col items-center space-y-1">
+      <span>
+       3
+      </span>
+      <span class="text-xs font-normal text-white/70 max-w-[80px]">
+       Review and feedback
+      </span>
+     </div>
+     <div class="flex flex-col items-center space-y-1">
+      <span>
+       4
+      </span>
+      <span class="text-xs font-normal text-white/70 max-w-[80px]">
+       Final delivery
+      </span>
      </div>
     </div>
-   </section>
-   <section class="max-w-5xl mx-auto mb-12">
-    <p class="text-[9px] text-[#a3a3a3] uppercase font-montserrat font-semibold tracking-widest mb-4 text-center">
-     TWITCH STREAM INTROS
-    </p>
-    <div class="grid grid-cols-1 sm:grid-cols-4 gap-4">
-      <video src="/videos/cashcow videos/c6.mp4" controls controlsList="nodownload" width="100%" muted class="w-full h-auto rounded border border-[#3ad6a0]"></video>  
-      <video src="/videos/cashcow videos/c8.mp4" controls controlsList="nodownload" width="100%" muted class="w-full h-auto rounded border border-[#3ad6a0]"></video>  
-      <video src="/videos/cashcow videos/c10.mp4" controls controlsList="nodownload" width="100%" muted class="w-full h-auto rounded border border-[#3ad6a0]"></video>  
-      <video src="/videos/cashcow videos/c9 (1).mp4" controls controlsList="nodownload" width="100%" muted class="w-full h-auto rounded border border-[#3ad6a0]"></video>  
-      <video src="/videos/cashcow videos/c11.mp4" controls controlsList="nodownload" width="100%" muted class="w-full h-auto rounded border border-[#3ad6a0]"></video>  
-      <video src="/videos/cashcow videos/c7.mp4" controls controlsList="nodownload" width="100%" muted class="w-full h-auto rounded border border-[#3ad6a0]"></video>  
-      <video src="/videos/2(Folder-1).mp4" controls controlsList="nodownload" width="100%" muted class="w-full h-auto rounded border border-[#3ad6a0]"></video>  
-      <video src="/videos/3(Folder-2).mp4" controls controlsList="nodownload" width="100%" muted class="w-full h-auto rounded border border-[#3ad6a0]"></video>  
-
-    </div>
-   </section>
-   <section class="max-w-5xl mx-auto flex justify-center space-x-6 mb-12">
-    <a class="bg-[#3ad6a0] text-[#1a122f] text-xs font-montserrat font-semibold uppercase px-6 py-1 rounded tracking-widest hover:bg-[#2a8c6a]" href="#">
-     ABOUT ME
-    </a>
-    <a class="bg-[#3ad6a0] text-[#1a122f] text-xs font-montserrat font-semibold uppercase px-6 py-1 rounded tracking-widest hover:bg-[#2a8c6a]" href="#">
-     PORTFOLIO
-    </a>
-   </section>
-   <section class="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-8 text-center mb-12">
+   </div>
+  </section>
+  <!-- Testimonials -->
+  <section class="max-w-[1280px] mx-auto px-6 py-20 bg-[#0a0a0d]">
+   <div class="max-w-[900px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
     <div>
-     <p class="text-[#3ad6a0] font-montserrat font-semibold text-sm">
-      100+
-     </p>
-     <p class="text-[9px] text-[#a3a3a3]">
-      projects and videos
-     </p>
+     <h4 class="text-white text-xs font-semibold uppercase mb-2">
+      WHAT OUR CLIENTS SAY ABOUT Editopia Studio
+     </h4>
+     <div class="text-white/20 text-4xl font-bold select-none mb-6">
+      "
+     </div>
+     <div class="space-y-6">
+      <div class="bg-[#1a1a1a] p-4 rounded text-xs text-white/80">
+       <div class="flex items-center space-x-2 mb-2">
+        <i class="fas fa-star text-yellow-400">
+        </i>
+        <i class="fas fa-star text-yellow-400">
+        </i>
+        <i class="fas fa-star text-yellow-400">
+        </i>
+        <i class="fas fa-star text-yellow-400">
+        </i>
+        <i class="fas fa-star text-yellow-400">
+        </i>
+       </div>
+       <p>
+        Editopia Studio transformed our raw footage into a stunning marketing
+              video that boosted our sales by 30%. Highly recommend!
+       </p>
+       <p class="mt-2 font-semibold">
+        - Amanda
+       </p>
+      </div>
+      <div class="bg-[#1a1a1a] p-4 rounded text-xs text-white/80">
+       <div class="flex items-center space-x-2 mb-2">
+        <i class="fas fa-star text-yellow-400">
+        </i>
+        <i class="fas fa-star text-yellow-400">
+        </i>
+        <i class="fas fa-star text-yellow-400">
+        </i>
+        <i class="fas fa-star text-yellow-400">
+        </i>
+        <i class="fas fa-star-half-alt text-yellow-400">
+        </i>
+       </div>
+       <p>
+        Their team was professional, responsive, and delivered exactly what
+              we needed on time.
+       </p>
+       <p class="mt-2 font-semibold">
+        - Chris
+       </p>
+      </div>
+      <div class="bg-[#1a1a1a] p-4 rounded text-xs text-white/80">
+       <div class="flex items-center space-x-2 mb-2">
+        <i class="fas fa-star text-yellow-400">
+        </i>
+        <i class="fas fa-star text-yellow-400">
+        </i>
+        <i class="fas fa-star text-yellow-400">
+        </i>
+        <i class="fas fa-star text-yellow-400">
+        </i>
+        <i class="far fa-star text-yellow-400">
+        </i>
+       </div>
+       <p>
+        Great quality and attention to detail. Our explainer video was a
+              hit with customers.
+       </p>
+       <p class="mt-2 font-semibold">
+        - Sarah
+       </p>
+      </div>
+     </div>
     </div>
-    <div>
-     <p class="text-[#3ad6a0] font-montserrat font-semibold text-sm">
-      3+
-     </p>
-     <p class="text-[9px] text-[#a3a3a3]">
-      years of experience
-     </p>
+    <div class="hidden md:block text-2xl font-bold text-white/10 select-none pt-20 pl-6">
+     TESTIMONIALS
     </div>
-    <div>
-     <p class="text-[#3ad6a0] font-montserrat font-semibold text-sm">
-      300k+
-     </p>
-     <p class="text-[9px] text-[#a3a3a3]">
-      views on one of my projects
-     </p>
+   </div>
+  </section>
+  <!-- Get a free trial form and info -->
+  <section class="max-w-[1280px] mx-auto px-6 py-20 grid grid-cols-1 md:grid-cols-3 gap-10">
+   <form aria-label="Get a free trial form" class="bg-[#1a1a1a] p-6 rounded max-w-md mx-auto md:mx-0 space-y-4 text-xs text-white">
+    <div class="grid grid-cols-2 gap-4">
+     <input class="bg-transparent border border-white/30 rounded px-3 py-2 text-white placeholder-white/50 focus:outline-none focus:border-[#ff3b3b]" placeholder="First Name *" required="" type="text"/>
+     <input class="bg-transparent border border-white/30 rounded px-3 py-2 text-white placeholder-white/50 focus:outline-none focus:border-[#ff3b3b]" placeholder="Last Name *" required="" type="text"/>
     </div>
-   </section>
-   <section class="max-w-5xl mx-auto text-center mb-12 px-4">
-    <p class="text-[9px] text-[#a3a3a3] italic max-w-xl mx-auto leading-tight">
-     <span class="text-[#3ad6a0] text-lg font-montserrat font-bold">
-      “
-     </span>
-     “Rudra has an eye for pace and punch. His reels are crisp, clean, and built to hook viewers in seconds. A joy to work with and always delivers on time.”
-
-     <br/>
-     <span class="block mt-2 text-[#a3a3a3] text-xs font-montserrat font-semibold">
-      — Content Creator & Client
-     </span>
-    </p>
-   </section>
-   <section class="max-w-7xl mx-auto border-t border-[#2a214a] py-6 px-4 flex flex-wrap justify-center gap-6 text-[9px] text-white font-montserrat font-bold uppercase tracking-widest">
-    <span>
-     MUSIC LABELS
-    </span>
-    <span>
-     STREAMING CREATORS
-    </span>
-    <span>
-     CONTENT AGENCIES 
-    </span>
-    <span>
-     INSTAGRAM INFLUENCERS
-    </span>
-    <span>
-     REELS PRODUCTION
-    </span>
-    <span>
-     SHORTS & HIGHLIGHTS
-    </span>
-    <span>
-     COMMERCIAL EDITS
-    </span>
-   </section>
-   <section class="max-w-2xl mx-auto mt-10 mb-20 bg-gradient-to-b from-[#1a122f] to-[#2a214a] p-6 rounded-md text-center">
-    <h4 class="text-[#3ad6a0] font-montserrat font-semibold text-xs uppercase mb-4 tracking-widest">
-     CONTACT ME
+    <input class="w-full bg-transparent border border-white/30 rounded px-3 py-2 text-white placeholder-white/50 focus:outline-none focus:border-[#ff3b3b]" placeholder="Your Email *" required="" type="email"/>
+    <input class="w-full bg-transparent border border-white/30 rounded px-3 py-2 text-white placeholder-white/50 focus:outline-none focus:border-[#ff3b3b]" placeholder="Phone Number *" required="" type="text"/>
+    <textarea class="w-full bg-transparent border border-white/30 rounded px-3 py-2 text-white placeholder-white/50 focus:outline-none focus:border-[#ff3b3b]" placeholder="Let us know your needs..." rows="3"></textarea>
+    <button class="w-full bg-[#ff3b3b] text-white font-semibold rounded px-4 py-2 hover:bg-[#e02e2e] transition" type="submit">
+     SUBMIT
+    </button>
+   </form>
+   <div class="text-white text-xs max-w-sm mx-auto md:mx-0 flex flex-col justify-center">
+    <h4 class="font-semibold mb-2">
+     Empower your brand WITH expert video editing services
     </h4>
-    <form class="space-y-3 text-left text-xs">
-     <input aria-label="Name" class="w-full px-2 py-1 text-[#1a122f] text-xs rounded-sm" placeholder="Name" type="text"/>
-     <input aria-label="Email" class="w-full px-2 py-1 text-[#1a122f] text-xs rounded-sm" placeholder="Email" type="email"/>
-     <input aria-label="Phone" class="w-full px-2 py-1 text-[#1a122f] text-xs rounded-sm" placeholder="Phone" type="tel"/>
-     <textarea aria-label="Your enquiry" class="w-full px-2 py-1 text-[#1a122f] text-xs rounded-sm resize-none" placeholder="Your enquiry, please..." rows="3"></textarea>
-     <button class="w-full bg-[#0a1a2a] text-[#3ad6a0] font-montserrat font-semibold uppercase text-xs py-1 rounded tracking-widest hover:bg-[#0f2a4a]" type="submit">
-      SEND
+    <p>
+     Join our editing service to create stunning videos that elevate your brand and engage your audience.
+    </p>
+   </div>
+  </section>
+  <!-- Video Editing Software -->
+  <section class="max-w-[1280px] mx-auto px-6 py-20 flex flex-col sm:flex-row items-center justify-between space-y-10 sm:space-y-0">
+   <div>
+    <h4 class="text-white text-xs font-semibold uppercase mb-4">
+     WE USE THE LATEST
+    </h4>
+    <h3 class="text-white text-2xl font-bold uppercase tracking-wide">
+     VIDEO EDITING SOFTWARE
+    </h3>
+    <div class="mt-6 flex space-x-6">
+     <img alt="Adobe Photoshop software box icon in blue" class="rounded" height="80" src="https://storage.googleapis.com/a1aa/image/511122ca-bb04-48f2-b5bc-0f2e1de842ee.jpg" width="80"/>
+     <img alt="Adobe After Effects software box icon in black" class="rounded" height="80" src="https://storage.googleapis.com/a1aa/image/aaf06fe2-03c9-48e3-cf2f-0e93157cd97d.jpg" width="80"/>
+     <img alt="Adobe Premiere Pro software box icon in purple" class="rounded" height="80" src="https://storage.googleapis.com/a1aa/image/f0349da0-4d3b-4b17-4cf1-1a55618d9f09.jpg" width="80"/>
+     <img alt="Final Cut Pro software box icon in black" class="rounded" height="80" src="https://storage.googleapis.com/a1aa/image/501aae97-5361-45a2-9d7d-af020e581d1f.jpg" width="80"/>
+    </div>
+   </div>
+   <img alt="Man wearing purple shirt holding a laptop smiling" class="rounded shadow-lg" height="250" src="https://storage.googleapis.com/a1aa/image/f77f9d0e-d63f-4938-d06c-bc1843c26024.jpg" width="200"/>
+  </section>
+  <!-- Success Stories -->
+  <section class="max-w-[1280px] mx-auto px-6 py-20">
+   <div class="flex items-center justify-between mb-6">
+    <h4 class="text-white text-xs font-semibold uppercase tracking-wide">
+     Editopia Studio
+    </h4>
+    <button class="bg-[#ff3b3b] text-white text-xs font-semibold rounded-full px-4 py-1 hover:bg-[#e02e2e] transition" onclick="window.location.href='/myport/Portfolio.html'">
+     PORTFOLIO
+    </button>
+   </div>
+   <h2 class="text-white text-2xl font-playfair font-bold tracking-wide mb-6">
+    SUCCESS STORIES
+   </h2>
+   <div class="text-center text-white text-xs max-w-md mx-auto mb-6">
+    French Translation Company Received an Artistic Storyboard of Their Original Script
+    <br/>
+    <span class="text-white/50 text-[10px]">
+     View success case
+    </span>
+   </div>
+   <div class="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-[900px] mx-auto">
+    <div class="relative">
+     <img alt="Black and white photo of a woman smiling and working on a laptop" class="rounded" height="300" src="https://storage.googleapis.com/a1aa/image/e31135f7-c66e-4a37-c800-5462ecaa02e0.jpg" width="400"/>
+     <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-black/80 to-transparent rounded">
+     </div>
+    </div>
+    <div class="space-y-6 text-white text-xs">
+     <h3 class="font-semibold uppercase">
+      HAVE A PROJECT IN MIND
+     </h3>
+     <p>
+      We’re ready to help you create stunning videos that engage your audience and grow your business.
+     </p>
+     <button class="bg-[#ff3b3b] text-white text-xs font-semibold rounded-full px-5 py-1 hover:bg-[#e02e2e] transition" onclick="window.location.href='/myport/Portfolio.html'">
+      GET FREE TRIAL
      </button>
-    </form>
-   </section>
-  </main>
-  <footer class="bg-[#1a122f] border-t border-[#2a214a] text-[9px] text-[#a3a3a3] py-4 px-4 text-center">
-   <p>
-    alongpixels@gmail.com
-   </p>
-   <p class="mt-2">
-    Design by Rudra Saxena    |    Developed by
-      Rudra Saxena
-   </p>
-   <p class="mt-2 text-xs font-montserrat font-semibold text-[#3ad6a0]">
-    © 2023 Rudra Saxena. All rights reserved.
-   </p>
+     <div class="flex space-x-6 mt-6 text-white/70 text-xs">
+      <div class="flex flex-col items-center">
+       <i class="fas fa-play-circle text-2xl">
+       </i>
+       <span>
+        24/7 SUPPORT
+       </span>
+      </div>
+      <div class="flex flex-col items-center">
+       <i class="fas fa-headset text-2xl">
+       </i>
+       <span>
+        DEDICATED TEAM
+       </span>
+      </div>
+      <div class="flex flex-col items-center">
+       <i class="fas fa-lock text-2xl">
+       </i>
+       <span>
+        SECURE PAYMENT
+       </span>
+      </div>
+      <div class="flex flex-col items-center">
+       <i class="fas fa-shield-alt text-2xl">
+       </i>
+       <span>
+        QUALITY GUARANTEE
+       </span>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section>
+  <!-- FAQ Section -->
+  <section class="max-w-[1280px] mx-auto px-6 py-20 text-white text-xs max-w-[900px]">
+   <h3 class="font-semibold mb-6">
+    Your Video Editing Questions Answered Here
+   </h3>
+   <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <ul class="space-y-3 list-disc list-inside cursor-pointer">
+     <li>
+      What is video editing and why is it important?
+     </li>
+     <li>
+      How long does the video editing process take?
+     </li>
+     <li>
+      Do you offer revisions and edits?
+     </li>
+    </ul>
+    <ul class="space-y-3 list-disc list-inside cursor-pointer">
+     <li>
+      What file formats do you accept for raw footage?
+     </li>
+     <li>
+      Can you add music, voiceovers, and effects?
+     </li>
+     <li>
+      How do I get started with your services?
+     </li>
+    </ul>
+   </div>
+  </section>
+  <!-- Footer -->
+  <footer class="bg-[#0a0a0d] text-white text-xs">
+   <div class="max-w-[1280px] mx-auto px-6 py-10 grid grid-cols-1 md:grid-cols-5 gap-10">
+    <div class="space-y-4">
+     <img alt="Editopia Studio logo in white on black background" class="h-7 w-auto" height="30" src="/myport/images/1000187931.png" width="120"/>
+     <p class="max-w-xs text-white/70">
+      Editopia Studio is your trusted partner for professional video editing and production services.
+     </p>
+     <div class="flex space-x-4 text-white/70">
+      <a aria-label="Facebook" class="hover:text-[#ff3b3b]" href="#">
+       <i class="fab fa-facebook-f">
+       </i>
+      </a>
+      <a aria-label="Twitter" class="hover:text-[#ff3b3b]" href="#">
+       <i class="fab fa-twitter">
+       </i>
+      </a>
+      <a aria-label="LinkedIn" class="hover:text-[#ff3b3b]" href="#">
+       <i class="fab fa-linkedin-in">
+       </i>
+      </a>
+      <a aria-label="Instagram" class="hover:text-[#ff3b3b]" href="#">
+       <i class="fab fa-instagram">
+       </i>
+      </a>
+     </div>
+    </div>
+    <div>
+     <h5 class="font-semibold mb-4">
+      USEFUL LINKS
+     </h5>
+     <ul class="space-y-2">
+      <li>
+       <a class="hover:text-[#ff3b3b]" href="#">
+        Home
+       </a>
+      </li>
+      <li>
+       <a class="hover:text-[#ff3b3b]" href="#">
+        About Us
+       </a>
+      </li>
+      <li>
+       <a class="hover:text-[#ff3b3b]" href="#">
+        Services
+       </a>
+      </li>
+      <li>
+       <a class="hover:text-[#ff3b3b]" href="#">
+        Portfolio
+       </a>
+      </li>
+      <li>
+       <a class="hover:text-[#ff3b3b]" href="#">
+        Contact Us
+       </a>
+      </li>
+     </ul>
+    </div>
+    <div>
+     <h5 class="font-semibold mb-4">
+      PORTFOLIO
+     </h5>
+     <ul class="space-y-2">
+      <li>
+       <a class="hover:text-[#ff3b3b]" href="#">
+        Marketing Videos
+       </a>
+      </li>
+      <li>
+       <a class="hover:text-[#ff3b3b]" href="#">
+        Explainer Videos
+       </a>
+      </li>
+      <li>
+       <a class="hover:text-[#ff3b3b]" href="#">
+        Corporate Videos
+       </a>
+      </li>
+      <li>
+       <a class="hover:text-[#ff3b3b]" href="#">
+        Animation
+       </a>
+      </li>
+      <li>
+       <a class="hover:text-[#ff3b3b]" href="#">
+        Testimonials
+       </a>
+      </li>
+     </ul>
+    </div>
+    <div>
+     <h5 class="font-semibold mb-4">
+      CONTACT
+     </h5>
+     <ul class="space-y-2">
+      <li>
+       123 Video St, Film City
+      </li>
+      <li>
+       Email: studioeditopia.com
+      </li>
+      <li>
+       Phone: +1 234 567 8900
+      </li>
+      <li>
+       Support: support@studioeditopia.com
+      </li>
+     </ul>
+    </div>
+    <div>
+     <h5 class="font-semibold mb-4">
+      NEWSLETTER
+     </h5>
+     <form class="space-y-4">
+      <input class="w-full bg-transparent border border-white/30 rounded px-3 py-2 text-white placeholder-white/50 focus:outline-none focus:border-[#ff3b3b]" placeholder="Your email" type="email"/>
+      <button class="w-full bg-[#ff3b3b] text-white font-semibold rounded px-4 py-2 hover:bg-[#e02e2e] transition" type="submit">
+       SUBSCRIBE
+      </button>
+     </form>
+    </div>
+   </div>
+   <div class="border-t border-white/10 text-center py-4 text-white/50 text-[10px]">
+    © 2024 Editopia Studio. All rights reserved.
+   </div>
   </footer>
- </body>
- <script>
-  document.addEventListener('contextmenu', event => event.preventDefault());
+  <script>
+   const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileMenuClose = document.getElementById('mobile-menu-close');
 
-  document.addEventListener("DOMContentLoaded", () => {
-    const menuToggle = document.getElementById("menu-toggle");
-    const menu = document.getElementById("menu");
-
-    menuToggle.addEventListener("click", () => {
-      menu.classList.toggle("hidden");
-      menu.classList.toggle("flex");
-      menu.classList.toggle("flex-col");
-      menu.classList.toggle("absolute");
-      menu.classList.toggle("top-16");
-      menu.classList.toggle("left-0");
-      menu.classList.toggle("bg-[#1a122f]");
-      menu.classList.toggle("w-full");
-      menu.classList.toggle("p-4");
-
-      // Add styling for menu items in mobile view
-      const menuItems = menu.querySelectorAll("li a");
-      menuItems.forEach((item) => {
-        item.classList.add("block", "py-2", "text-center", "text-[#d1d1d1]", "hover:text-[#3ad6a0]");
-      });
+    mobileMenuButton.addEventListener('click', () => {
+      mobileMenu.classList.remove('hidden');
     });
-  });
-</script>
 
+    mobileMenuClose.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+    });
+  </script>
+ </body>
 </html>
