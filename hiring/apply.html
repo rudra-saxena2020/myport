@@ -17,24 +17,6 @@
             color: #333;
             overflow-x: hidden;
         }
-
-        .hero-section {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
-
-        .hero-content {
-            text-align: center;
-            z-index: 2;
-            max-width: 800px;
-            padding: 0 20px;
-            animation: fadeInUp 1s ease-out;
-        }
-
         .logo {
             font-size: 3rem;
             font-weight: 800;
@@ -437,24 +419,193 @@
     </style>
 </head>
 <body>
-    <!-- Hero Section -->
-    <section class="hero-section" id="heroSection">
-        <div class="floating-shapes">
-            <div class="shape"></div>
-            <div class="shape"></div>
-            <div class="shape"></div>
-        </div>
-        
+  <section class="hero" id="home">
+    <div class="container">
         <div class="hero-content">
-            <div class="logo">EDITOPIA STUDIO</div>
-            <div class="tagline">Where Creativity Meets Excellence</div>
-            <div class="hero-description">
-                Join a growing studio that values creativity, professionalism, and flexible work. 
-                We're looking for talented video editors who are passionate about creating exceptional content.
-            </div>
+            <div class="hero-badge">🎬 We're Hiring Creative Talent</div>
+            <h1 class="hero-title">Join Editopia Studio Video Editor Team</h1>
+            <p class="hero-subtitle">Work with premium clients on exciting projects. Remote opportunities, competitive rates, and creative freedom await passionate video editors.</p>
+            
             <button class="cta-button" onclick="startApplication()">🚀 Apply Now</button>
+                <a href="#learn-more" class="btn-secondary">Learn More</a>
+            </div>
         </div>
-    </section>
+    </div>
+</section>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    :root {
+        --youtube-red: #FF0000;
+        --youtube-dark-red: #CC0000;
+        --white: #FFFFFF;
+        --light-gray: #F9F9F9;
+        --medium-gray: #E5E5E5;
+        --text-dark: #0D0D0D;
+        --text-medium: #606060;
+        --shadow-light: rgba(0, 0, 0, 0.1);
+    }
+
+    body {
+        font-family: 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
+        background: var(--white);
+        color: var(--text-dark);
+        line-height: 1.6;
+        overflow-x: hidden;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    .hero {
+        background: linear-gradient(135deg, var(--light-gray) 0%, var(--white) 100%);
+        padding: 6rem 0;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="%23FF000010" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+        opacity: 0.3;
+    }
+
+    .hero-content {
+        position: relative;
+        z-index: 2;
+    }
+
+    .hero-badge {
+        display: inline-block;
+        background: rgba(255, 0, 0, 0.1);
+        color: var(--youtube-red);
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: 500;
+        margin-bottom: 2rem;
+        animation: fadeInUp 0.8s ease-out;
+    }
+
+    .hero-title {
+        font-size: 4rem;
+        font-weight: 900;
+        color: var(--text-dark);
+        margin-bottom: 1.5rem;
+        line-height: 1.1;
+        animation: fadeInUp 0.8s ease-out 0.2s both;
+    }
+
+    .hero-subtitle {
+        font-size: 1.3rem;
+        color: var(--text-medium);
+        margin-bottom: 3rem;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+        animation: fadeInUp 0.8s ease-out 0.4s both;
+    }
+
+    .hero-cta {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+        animation: fadeInUp 0.8s ease-out 0.6s both;
+    }
+
+    .btn-primary {
+        background: var(--youtube-red);
+        color: var(--white);
+        padding: 1rem 2rem;
+        border-radius: 30px;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+        border: none;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .btn-primary::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        transition: left 0.5s;
+    }
+
+    .btn-primary:hover::before {
+        left: 100%;
+    }
+
+    .btn-primary:hover {
+        background: var(--youtube-dark-red);
+        transform: translateY(-3px);
+        box-shadow: 0 10px 25px rgba(255, 0, 0, 0.3);
+    }
+
+    .btn-secondary {
+        background: transparent;
+        color: var(--text-dark);
+        padding: 1rem 2rem;
+        border: 2px solid var(--medium-gray);
+        border-radius: 30px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+    }
+
+    .btn-secondary:hover {
+        border-color: var(--youtube-red);
+        color: var(--youtube-red);
+        transform: translateY(-3px);
+        box-shadow: 0 10px 25px var(--shadow-light);
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @media (max-width: 768px) {
+        .hero-title {
+            font-size: 2.5rem;
+        }
+        
+        .hero-cta {
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+</style>
+
 
     <!-- Step 1: Application Process -->
     <section class="step-section hidden" id="step1Section">
@@ -629,7 +780,7 @@
 
     <script>
         function startApplication() {
-            document.getElementById('heroSection').classList.add('hidden');
+            document.getElementById('home').classList.add('hidden');
             document.getElementById('step1Section').classList.remove('hidden');
             window.scrollTo(0, 0);
         }
