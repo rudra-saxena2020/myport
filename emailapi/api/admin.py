@@ -18,7 +18,7 @@ def export_to_excel(modeladmin, request, queryset):
     for user in queryset:
         sheet.append([
             user.id,
-            user.name,
+            user.full_name,  # updated field name from `name` to `full_name`
             user.email,
             user.created_at.strftime("%Y-%m-%d %H:%M:%S")
         ])
@@ -33,8 +33,8 @@ def export_to_excel(modeladmin, request, queryset):
 # Admin config
 @admin.register(UserInfo)
 class UserInfoAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'email', 'created_at')
+    list_display = ('id', 'full_name', 'email', 'created_at')  # use `full_name`
     list_filter = ('created_at',)
-    search_fields = ('name', 'email')
+    search_fields = ('full_name', 'email')  # use `full_name`
     ordering = ('-id',)
     actions = [export_to_excel]

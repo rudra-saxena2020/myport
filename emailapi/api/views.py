@@ -31,3 +31,15 @@ def collect_user_info(request):
             return JsonResponse({'status': 'error', 'message': str(e)}, status=400)
 
     return JsonResponse({'error': 'Only POST requests are allowed'}, status=405)
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+from .serializers import UserInfoSerializer
+
+class UserInfoCreateView(APIView):
+    def post(self, request):
+        serializer = UserInfoSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response({"message": "User info saved successfully"}, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
