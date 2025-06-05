@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Join Editopia Studio - Where Creativity Meets Excellence</title>
+    <link rel="icon" type="image/png" href="/images/1000187931.png">
     <style>
         * {
             margin: 0;
@@ -11,67 +12,243 @@
             box-sizing: border-box;
         }
 
+        :root {
+            --youtube-red: #FF0000;
+            --youtube-dark-red: #CC0000;
+            --white: #FFFFFF;
+            --light-gray: #F9F9F9;
+            --medium-gray: #E5E5E5;
+            --text-dark: #0D0D0D;
+            --text-medium: #606060;
+            --shadow-light: rgba(0, 0, 0, 0.1);
+            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-accent: linear-gradient(45deg, #ff6b6b, #ffa726);
+            --gradient-success: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+        }
+
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: #333;
+            font-family: 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--white);
+            color: var(--text-dark);
+            line-height: 1.6;
             overflow-x: hidden;
         }
-        .logo {
-            font-size: 3rem;
-            font-weight: 800;
-            color: white;
-            margin-bottom: 1rem;
-            text-shadow: 0 4px 8px rgba(0,0,0,0.3);
-            animation: glow 2s ease-in-out infinite alternate;
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
 
-        @keyframes glow {
-            from { text-shadow: 0 4px 8px rgba(0,0,0,0.3); }
-            to { text-shadow: 0 4px 20px rgba(255,255,255,0.5); }
+        /* Enhanced Navbar - Fully Responsive */
+.navbar {
+    background: #000 !important;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 40;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 2rem;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.10);
+    border-bottom: 1px solid rgba(255,0,0,0.08);
+}
+
+.navbar .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+}
+
+.nav-logo-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    object-fit: cover;
+    box-shadow: 0 4px 15px rgba(23,22,22,0.3);
+}
+
+.nav-logo-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fff !important;
+    background: none !important;
+    -webkit-background-clip: unset !important;
+    -webkit-text-fill-color: unset !important;
+    background-clip: unset !important;
+    letter-spacing: 0.5px;
+}
+
+.back-button {
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+    padding: 5px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+.back-button svg path {
+    stroke: #fff !important;
+}
+.back-button:hover {
+    background: rgba(255,255,255,0.08);
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        padding: 0.5rem 1rem;
+    }
+    .nav-logo-img {
+        width: 32px;
+        height: 32px;
+    }
+    .nav-logo-text {
+        font-size: 1.1rem;
+    }
+}
+@media (max-width: 480px) {
+    .navbar {
+        padding: 0.4rem 0.5rem;
+    }
+    .nav-logo-img {
+        width: 26px;
+        height: 26px;
+    }
+    .nav-logo-text {
+        font-size: 1rem;
+    }
+}
+        /* Hero Section - Enhanced Responsiveness */
+        .hero {
+            background: linear-gradient(135deg, var(--light-gray) 0%, var(--white) 100%);
+            padding: 8rem 0 6rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin-top: 70px;
         }
 
-        .tagline {
-            font-size: 1.5rem;
-            color: rgba(255,255,255,0.9);
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="%23FF000010" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255, 0, 0, 0.1);
+            color: var(--youtube-red);
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 600;
             margin-bottom: 2rem;
-            font-weight: 300;
+            animation: fadeInUp 0.8s ease-out;
+            border: 1px solid rgba(255, 0, 0, 0.2);
         }
 
-        .hero-description {
-            font-size: 1.1rem;
-            color: rgba(255,255,255,0.8);
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 900;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            color: rgba(18, 16, 16, 0.9);
             margin-bottom: 3rem;
-            line-height: 1.6;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease-out 0.6s both;
         }
 
         .cta-button {
-            background: linear-gradient(45deg, #ff6b6b, #ffa726);
+            background: var(--gradient-accent);
             color: white;
-            padding: 18px 40px;
+            padding: 1.25rem 3rem;
             border: none;
             border-radius: 50px;
-            font-size: 1.2rem;
-            font-weight: 600;
+            font-size: 1.3rem;
+            font-weight: 700;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
             text-decoration: none;
             display: inline-block;
-            box-shadow: 0 8px 30px rgba(255,107,107,0.3);
-            animation: pulse 2s infinite;
+            box-shadow: 0 10px 40px rgba(255, 107, 107, 0.3);
+            position: relative;
+            overflow: hidden;
         }
 
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.6s;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
         }
 
         .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 40px rgba(255,107,107,0.4);
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 15px 50px rgba(255, 107, 107, 0.4);
         }
 
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-dark);
+            padding: 1.25rem 2.5rem;
+            border: 2px solid var(--medium-gray);
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--youtube-red);
+            color: var(--youtube-red);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px var(--shadow-light);
+        }
+
+        /* Floating Shapes */
         .floating-shapes {
             position: absolute;
             top: 0;
@@ -85,39 +262,48 @@
         .shape {
             position: absolute;
             border-radius: 50%;
-            background: rgba(255,255,255,0.1);
-            animation: float 6s ease-in-out infinite;
+            background: rgba(255, 255, 255, 0.1);
+            animation: float 8s ease-in-out infinite;
+            backdrop-filter: blur(5px);
         }
 
         .shape:nth-child(1) {
-            width: 80px;
-            height: 80px;
-            top: 20%;
-            left: 10%;
+            width: 100px;
+            height: 100px;
+            top: 15%;
+            left: 8%;
             animation-delay: 0s;
+            background: rgba(255, 107, 107, 0.1);
         }
 
         .shape:nth-child(2) {
-            width: 120px;
-            height: 120px;
-            top: 60%;
-            right: 10%;
+            width: 150px;
+            height: 150px;
+            top: 50%;
+            right: 8%;
             animation-delay: 2s;
+            background: rgba(102, 126, 234, 0.1);
         }
 
         .shape:nth-child(3) {
-            width: 60px;
-            height: 60px;
-            top: 80%;
-            left: 20%;
+            width: 80px;
+            height: 80px;
+            top: 75%;
+            left: 15%;
             animation-delay: 4s;
+            background: rgba(255, 167, 38, 0.1);
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(180deg); }
+        .shape:nth-child(4) {
+            width: 120px;
+            height: 120px;
+            top: 25%;
+            right: 25%;
+            animation-delay: 6s;
+            background: rgba(255, 255, 255, 0.05);
         }
 
+        /* Step Sections - Enhanced Responsiveness */
         .hidden {
             display: none !important;
         }
@@ -125,111 +311,182 @@
         .step-section {
             min-height: 100vh;
             background: white;
-            padding: 80px 0;
+            padding: 100px 0;
             display: flex;
             align-items: center;
             justify-content: center;
+            position: relative;
+            overflow: hidden;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            text-align: center;
+        .step-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, #f8f9ff 25%, transparent 25%), 
+                        linear-gradient(-45deg, #f8f9ff 25%, transparent 25%), 
+                        linear-gradient(45deg, transparent 75%, #f8f9ff 75%), 
+                        linear-gradient(-45deg, transparent 75%, #f8f9ff 75%);
+            background-size: 60px 60px;
+            background-position: 0 0, 0 30px, 30px -30px, -30px 0px;
+            opacity: 0.03;
         }
 
         .step-content {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
+            text-align: center;
             animation: fadeInUp 0.8s ease-out;
+            position: relative;
+            z-index: 2;
+            padding: 0 20px;
         }
 
         .step-number {
-            width: 100px;
-            height: 100px;
-            background: linear-gradient(45deg, #667eea, #764ba2);
+            width: 120px;
+            height: 120px;
+            background: var(--gradient-primary);
             color: white;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2.5rem;
-            font-weight: bold;
-            margin: 0 auto 30px;
+            font-size: 3rem;
+            font-weight: 900;
+            margin: 0 auto 40px;
             animation: scaleIn 0.8s ease-out;
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.3);
+            position: relative;
+        }
+
+        .step-number::after {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border: 2px solid rgba(102, 126, 234, 0.2);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
         }
 
         .step-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            background: linear-gradient(45deg, #667eea, #764ba2);
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 30px;
+            background: var(--gradient-primary);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            line-height: 1.2;
         }
 
         .step-description {
-            font-size: 1.2rem;
-            color: #666;
-            line-height: 1.6;
-            margin-bottom: 40px;
+            font-size: 1.3rem;
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 50px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .continue-button {
-            background: linear-gradient(45deg, #667eea, #764ba2);
+            background: var(--gradient-primary);
             color: white;
-            padding: 18px 40px;
+            padding: 1.25rem 3rem;
             border: none;
             border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: 600;
+            font-size: 1.2rem;
+            font-weight: 700;
             cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 30px rgba(102,126,234,0.3);
+            transition: all 0.4s ease;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 10px 40px rgba(102, 126, 234, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .continue-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .continue-button:hover::before {
+            left: 100%;
         }
 
         .continue-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 40px rgba(102,126,234,0.4);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 50px rgba(102, 126, 234, 0.4);
         }
 
+        /* Application Section - Enhanced Responsiveness */
         .application-section {
-            background: white;
-            padding: 80px 0;
+            background: linear-gradient(135deg, #f8f9ff 0%, #fff 100%);
+            padding: 100px 0;
             min-height: 100vh;
             display: flex;
             align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .application-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 20%, rgba(102, 126, 234, 0.05) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(255, 107, 107, 0.05) 0%, transparent 50%);
         }
 
         .section-title {
             text-align: center;
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            background: linear-gradient(45deg, #667eea, #764ba2);
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: var(--gradient-primary);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            position: relative;
+            z-index: 2;
         }
 
         .section-subtitle {
             text-align: center;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             color: #666;
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
+            position: relative;
+            z-index: 2;
         }
 
         .form-container {
             background: white;
-            border-radius: 20px;
-            padding: 40px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
-            border: 1px solid #e0e0e0;
+            border-radius: 30px;
+            padding: 60px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e8e8e8;
             position: relative;
             overflow: hidden;
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
+            backdrop-filter: blur(10px);
         }
 
         .form-container::before {
@@ -238,15 +495,50 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 4px;
-            background: linear-gradient(45deg, #ff6b6b, #ffa726, #667eea);
+            height: 6px;
+            background: var(--gradient-accent);
+        }
+
+        .application-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+/* Remove background from logo-icon in application form */
+.logo-icon {
+    width: 48px;
+    height: 48px;
+    /* background: #FF0000; */ /* Remove or comment out this line */
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #5d5a5a;
+    font-size: 1.5rem;
+    font-weight: 900;
+    box-shadow: 0 4px 15px rgba(255, 0, 0, 0.0); /* Remove shadow if you want */
+    margin-right: 12px;
+    background: none !important; /* Ensure no background */
+    box-shadow: none !important; /* Remove shadow */
+}
+        .logo-text {
+            font-size: 2rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, #ede6e6, #fff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .form-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin-bottom: 30px;
+            gap: 30px;
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 2;
         }
 
         .form-group {
@@ -255,22 +547,25 @@
 
         .form-group label {
             display: block;
-            font-weight: 600;
+            font-weight: 700;
             color: #333;
-            margin-bottom: 8px;
-            font-size: 0.95rem;
+            margin-bottom: 12px;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .form-group input,
         .form-group select,
         .form-group textarea {
             width: 100%;
-            padding: 15px 20px;
-            border: 2px solid #e0e0e0;
-            border-radius: 12px;
-            font-size: 1rem;
+            padding: 18px 24px;
+            border: 2px solid #e8e8e8;
+            border-radius: 15px;
+            font-size: 1.1rem;
             transition: all 0.3s ease;
             background: #fafafa;
+            font-family: inherit;
         }
 
         .form-group input:focus,
@@ -279,7 +574,8 @@
             outline: none;
             border-color: #667eea;
             background: white;
-            box-shadow: 0 0 0 3px rgba(102,126,234,0.1);
+            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+            transform: translateY(-2px);
         }
 
         .form-group.full-width {
@@ -287,23 +583,40 @@
         }
 
         .submit-button {
-            background: linear-gradient(45deg, #667eea, #764ba2);
+            background: var(--gradient-primary);
             color: white;
-            padding: 18px 60px;
+            padding: 20px 80px;
             border: none;
             border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: 600;
+            font-size: 1.2rem;
+            font-weight: 700;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
             display: block;
-            margin: 30px auto 0;
-            box-shadow: 0 8px 30px rgba(102,126,234,0.3);
+            margin: 40px auto 0;
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .submit-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .submit-button:hover::before {
+            left: 100%;
         }
 
         .submit-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 40px rgba(102,126,234,0.4);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.4);
         }
 
         .submit-button:disabled {
@@ -312,83 +625,121 @@
             transform: none;
         }
 
+        /* Confirmation Section - Enhanced Responsiveness */
         .confirmation-section {
             min-height: 100vh;
-            background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+            background: var(--gradient-success);
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .confirmation-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="successGrid" width="25" height="25" patternUnits="userSpaceOnUse"><path d="M 25 0 L 0 0 0 25" fill="none" stroke="%23ffffff10" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23successGrid)"/></svg>');
+            opacity: 0.3;
         }
 
         .confirmation-content {
-            max-width: 600px;
+            max-width: 700px;
             padding: 0 20px;
             animation: fadeInUp 0.8s ease-out;
+            position: relative;
+            z-index: 2;
         }
 
         .success-icon {
-            width: 120px;
-            height: 120px;
-            background: rgba(255,255,255,0.2);
+            width: 150px;
+            height: 150px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 30px;
-            font-size: 3rem;
+            margin: 0 auto 40px;
+            font-size: 4rem;
             animation: scaleIn 0.8s ease-out;
+            border: 3px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+        }
+
+        .success-icon::after {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: -15px;
+            right: -15px;
+            bottom: -15px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
         }
 
         .confirmation-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 20px;
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 30px;
+            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
 
         .confirmation-description {
-            font-size: 1.2rem;
-            line-height: 1.6;
-            margin-bottom: 30px;
-            opacity: 0.9;
+            font-size: 1.4rem;
+            line-height: 1.8;
+            margin-bottom: 40px;
+            opacity: 0.95;
         }
 
         .next-steps {
-            background: rgba(255,255,255,0.1);
-            padding: 30px;
-            border-radius: 15px;
-            margin-top: 30px;
-            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            padding: 40px;
+            border-radius: 20px;
+            margin-top: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .next-steps h4 {
-            font-size: 1.4rem;
-            margin-bottom: 15px;
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            font-weight: 700;
         }
 
-        .back-button {
-            background: rgba(255,255,255,0.2);
-            color: white;
-            padding: 15px 30px;
-            border: 2px solid rgba(255,255,255,0.3);
+        .back-button-confirm {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            color: rgb(0, 0, 0);
+            padding: 18px 40px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
             border-radius: 50px;
-            font-size: 1rem;
+            font-size: 1.1rem;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s ease;
-            margin-top: 30px;
+            transition: all 0.4s ease;
+            margin-top: 40px;
         }
 
-        .back-button:hover {
-            background: rgba(255,255,255,0.3);
-            transform: translateY(-2px);
+        .back-button-confirm:hover {
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
         }
 
+        /* Animations */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateY(40px);
             }
             to {
                 opacity: 1;
@@ -399,7 +750,7 @@
         @keyframes scaleIn {
             from {
                 opacity: 0;
-                transform: scale(0.5);
+                transform: scale(0.3);
             }
             to {
                 opacity: 1;
@@ -407,465 +758,586 @@
             }
         }
 
-        @media (max-width: 768px) {
-            .logo { font-size: 2rem; }
-            .tagline { font-size: 1.2rem; }
-            .hero-description { font-size: 1rem; }
-            .step-title, .section-title, .confirmation-title { font-size: 2rem; }
-            .form-container { padding: 20px; }
-            .form-grid { grid-template-columns: 1fr; }
-            .step-number { width: 80px; height: 80px; font-size: 2rem; }
+        @keyframes pulse {
+            0%, 100% { 
+                transform: scale(1); 
+                opacity: 1; 
+            }
+            50% { 
+                transform: scale(1.05); 
+                opacity: 0.8; 
+            }
         }
-    </style>
+
+        @keyframes float {
+            0%, 100% { 
+                transform: translateY(0px) rotate(0deg) scale(1); 
+                opacity: 0.7;
+            }
+            33% { 
+                transform: translateY(-30px) rotate(120deg) scale(1.1); 
+                opacity: 1;
+            }
+            66% { 
+                transform: translateY(20px) rotate(240deg) scale(0.9); 
+                opacity: 0.8;
+            }
+        }
+
+        /* ENHANCED RESPONSIVE STYLES */
+
+        /* Tablets (768px and below) */
+        @media (max-width: 768px) {
+
+            .hero {
+                padding: 6rem 0 4rem;
+                margin-top: 60px;
+            }
+
+            .hero-title {
+                font-size: 2.8rem;
+                line-height: 1.2;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+                margin-bottom: 2.5rem;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .cta-button {
+                padding: 1.1rem 2.5rem;
+                font-size: 1.2rem;
+                width: 100%;
+                max-width: 280px;
+            }
+
+            .btn-secondary {
+                padding: 1.1rem 2rem;
+                font-size: 1.1rem;
+                width: 100%;
+                max-width: 280px;
+            }
+
+            .step-section {
+                padding: 80px 0;
+                min-height: auto;
+            }
+
+            .step-number {
+                width: 100px;
+                height: 100px;
+                font-size: 2.5rem;
+                margin-bottom: 30px;
+            }
+
+            .step-title {
+                font-size: 2.5rem;
+                margin-bottom: 25px;
+            }
+
+            .step-description {
+                font-size: 1.2rem;
+                margin-bottom: 40px;
+            }
+
+            .continue-button {
+                padding: 1.1rem 2.5rem;
+                font-size: 1.1rem;
+                width: 100%;
+                max-width: 280px;
+            }
+
+            .application-section {
+                padding: 80px 0;
+            }
+
+            .section-title {
+                font-size: 2.8rem;
+                margin-bottom: 1rem;
+            }
+
+            .section-subtitle {
+                font-size: 1.2rem;
+                margin-bottom: 3rem;
+            }
+
+            .form-container {
+                padding: 40px 25px;
+                border-radius: 20px;
+                margin: 0 10px;
+            }
+
+            .logo-text {
+                font-size: 1.6rem;
+            }
+
+            .logo-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+                margin-bottom: 30px;
+            }
+
+            .form-group input,
+            .form-group select,
+            .form-group textarea {
+                padding: 16px 20px;
+                font-size: 1rem;
+            }
+
+            .submit-button {
+                padding: 18px 40px;
+                font-size: 1.1rem;
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .confirmation-title {
+                font-size: 2.8rem;
+            }
+
+            .confirmation-description {
+                font-size: 1.2rem;
+            }
+
+            .success-icon {
+                width: 120px;
+                height: 120px;
+                font-size: 3rem;
+            }
+
+            .next-steps {
+                padding: 30px 20px;
+            }
+
+            .next-steps h4 {
+                font-size: 1.4rem;
+            }
+
+            .back-button-confirm {
+                padding: 16px 30px;
+                font-size: 1rem;
+                width: 100%;
+                max-width: 250px;
+            }
+
+            .floating-shapes .shape {
+                display: none;
+            }
+        }
+
+        /* Mobile phones (480px and below) */
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+
+
+            .hero {
+                padding: 5rem 0 3rem;
+                margin-top: 55px;
+            }
+
+            .hero-badge {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .hero-title {
+                font-size: 2.2rem;
+                margin-bottom: 1rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+                margin-bottom: 2rem;
+            }
+            .cta-button {
+               padding: 1rem 2rem;
+               font-size: 1.1rem;
+               width: 100%;
+               max-width: 250px;
+           }
+
+           .btn-secondary {
+               padding: 1rem 1.8rem;
+               font-size: 1rem;
+               width: 100%;
+               max-width: 250px;
+           }
+
+           .step-section {
+               padding: 60px 0;
+           }
+
+           .step-content {
+               padding: 0 15px;
+           }
+
+           .step-number {
+               width: 80px;
+               height: 80px;
+               font-size: 2rem;
+               margin-bottom: 25px;
+           }
+
+           .step-title {
+               font-size: 2rem;
+               margin-bottom: 20px;
+           }
+
+           .step-description {
+               font-size: 1.1rem;
+               margin-bottom: 35px;
+           }
+
+           .continue-button {
+               padding: 1rem 2rem;
+               font-size: 1rem;
+               width: 100%;
+               max-width: 250px;
+           }
+
+           .application-section {
+               padding: 60px 0;
+           }
+
+           .section-title {
+               font-size: 2.2rem;
+               margin-bottom: 0.8rem;
+           }
+
+           .section-subtitle {
+               font-size: 1.1rem;
+               margin-bottom: 2.5rem;
+           }
+
+           .form-container {
+               padding: 30px 20px;
+               border-radius: 15px;
+               margin: 0 5px;
+           }
+
+           .logo-text {
+               font-size: 1.4rem;
+           }
+
+           .logo-icon {
+               width: 35px;
+               height: 35px;
+               font-size: 1rem;
+           }
+
+           .form-grid {
+               gap: 20px;
+               margin-bottom: 25px;
+           }
+
+           .form-group label {
+               font-size: 0.9rem;
+               margin-bottom: 8px;
+           }
+
+           .form-group input,
+           .form-group select,
+           .form-group textarea {
+               padding: 14px 18px;
+               font-size: 0.95rem;
+               border-radius: 12px;
+           }
+
+           .submit-button {
+               padding: 16px 30px;
+               font-size: 1rem;
+               width: 100%;
+               max-width: 280px;
+               margin-top: 30px;
+           }
+
+           .confirmation-title {
+               font-size: 2.2rem;
+               margin-bottom: 25px;
+           }
+
+           .confirmation-description {
+               font-size: 1.1rem;
+               margin-bottom: 30px;
+           }
+
+           .success-icon {
+               width: 100px;
+               height: 100px;
+               font-size: 2.5rem;
+               margin-bottom: 30px;
+           }
+
+           .next-steps {
+               padding: 25px 15px;
+               border-radius: 15px;
+               margin-top: 30px;
+           }
+
+           .next-steps h4 {
+               font-size: 1.2rem;
+               margin-bottom: 15px;
+           }
+
+           .back-button-confirm {
+               padding: 14px 25px;
+               font-size: 0.95rem;
+               width: 100%;
+               max-width: 220px;
+               margin-top: 30px;
+           }
+       }
+
+       /* Extra small devices (360px and below) */
+       @media (max-width: 360px) {
+           .hero-title {
+               font-size: 1.9rem;
+           }
+
+           .step-title {
+               font-size: 1.8rem;
+           }
+
+           .section-title {
+               font-size: 2rem;
+           }
+
+           .confirmation-title {
+               font-size: 2rem;
+           }
+
+           .form-container {
+               padding: 25px 15px;
+           }
+
+           .cta-button,
+           .btn-secondary,
+           .continue-button,
+           .submit-button {
+               max-width: 100%;
+           }
+       }
+
+       /* Smooth scrolling for all browsers */
+       html {
+           scroll-behavior: smooth;
+       }
+
+       /* Enhanced focus states for accessibility */
+       button:focus,
+       input:focus,
+       select:focus,
+       textarea:focus {
+           outline: 3px solid rgba(102, 126, 234, 0.5);
+           outline-offset: 2px;
+       }
+
+       /* Loading state for form submission */
+       .loading {
+           position: relative;
+           pointer-events: none;
+       }
+
+       .loading::after {
+           content: '';
+           position: absolute;
+           top: 50%;
+           left: 50%;
+           width: 20px;
+           height: 20px;
+           margin: -10px;
+           border: 2px solid transparent;
+           border-top: 2px solid white;
+           border-radius: 50%;
+           animation: spin 1s linear infinite;
+       }
+
+       @keyframes spin {
+           0% { transform: rotate(0deg); }
+           100% { transform: rotate(360deg); }
+       }
+   </style>
 </head>
 <body>
-  <section class="hero" id="home">
-    <div class="container">
-        <div class="hero-content">
-            <div class="hero-badge">🎬 We're Hiring Creative Talent</div>
-            <h1 class="hero-title">Join Editopia Studio Video Editor Team</h1>
-            <p class="hero-subtitle">Work with premium clients on exciting projects. Remote opportunities, competitive rates, and creative freedom await passionate video editors.</p>
-            
-            <button class="cta-button" onclick="startApplication()">🚀 Apply Now</button>
-                <a href="#learn-more" class="btn-secondary">Learn More</a>
-            </div>
-        </div>
+   <!-- Navbar -->
+<nav class="navbar">
+    <div class="logo">
+        <!-- White back arrow button for navigation -->
+        <button class="back-button" onclick="goHome()" aria-label="Back">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                <path d="M15.5 19L9.5 12L15.5 5" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </button>
+        <img src="/myport/images/1000187931.png" alt="Editopia Studio" class="nav-logo-img">
+        <span class="nav-logo-text">Editopia Studio</span>
     </div>
-</section>
+    <!-- Example: Add nav links or actions here if needed -->
+    <!--
+    <div class="nav-links">
+        <a href="#application" class="nav-link">Apply</a>
+        <a href="#learn-more" class="nav-link">Learn More</a>
+    </div>
+    -->
+</nav>   <!-- Hero Section -->
+   <section id="hero" class="hero">
+       <div class="floating-shapes">
+           <div class="shape"></div>
+           <div class="shape"></div>
+           <div class="shape"></div>
+           <div class="shape"></div>
+       </div>
+       <div class="container">
+           <div class="hero-content">
+               <div class="hero-badge">🎥 Join Our Creative Team</div>
+               <h1 class="hero-title">Transform Your Passion into Professional Excellence</h1>
+               <p class="hero-subtitle">Join Editopia Studio and become part of a dynamic team creating exceptional video content. We're looking for talented individuals ready to make their mark in the digital content creation industry.</p>
+               <div class="hero-cta">
+                   <button class="cta-button" onclick="startApplication()">Start Your Journey</button>
+                   <a href="#learn-more" class="btn-secondary">Learn More</a>
+               </div>
+           </div>
+       </div>
+   </section>
 
-<style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
+   <!-- Step 1: Welcome -->
+   <section id="step1" class="step-section hidden">
+       <div class="container">
+           <div class="step-content">
+               <div class="step-number">1</div>
+               <h2 class="step-title">Welcome to Your Future</h2>
+               <p class="step-description">Welcome to Editopia Studio's application process! We're excited to learn about your passion for video editing and content creation. This journey will help us understand your skills, creativity, and vision for joining our team.</p>
+               <button class="continue-button" onclick="nextStep('step2')">Let's Begin</button>
+           </div>
+       </div>
+   </section>
 
-    :root {
-        --youtube-red: #FF0000;
-        --youtube-dark-red: #CC0000;
-        --white: #FFFFFF;
-        --light-gray: #F9F9F9;
-        --medium-gray: #E5E5E5;
-        --text-dark: #0D0D0D;
-        --text-medium: #606060;
-        --shadow-light: rgba(0, 0, 0, 0.1);
-    }
+   <!-- Step 2: Your Skills -->
+   <section id="step2" class="step-section hidden">
+       <div class="container">
+           <div class="step-content">
+               <div class="step-number">2</div>
+               <h2 class="step-title">Showcase Your Expertise</h2>
+               <p class="step-description">Tell us about your experience with video editing, motion graphics, and creative storytelling. Whether you're a seasoned professional or a passionate beginner, we value dedication and creativity above all.</p>
+               <button class="continue-button" onclick="nextStep('step3')">Continue</button>
+           </div>
+       </div>
+   </section>
 
-    body {
-        font-family: 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
-        background: var(--white);
-        color: var(--text-dark);
-        line-height: 1.6;
-        overflow-x: hidden;
-    }
+   <!-- Step 3: Your Vision -->
+   <section id="step3" class="step-section hidden">
+       <div class="container">
+           <div class="step-content">
+               <div class="step-number">3</div>
+               <h2 class="step-title">Share Your Creative Vision</h2>
+               <p class="step-description">At Editopia Studio, we believe every editor brings a unique perspective. Share your creative vision, your inspiration, and how you see yourself contributing to our mission of creating exceptional digital content.</p>
+    <button class="continue-button" onclick="window.location.href='/myport/hiring/form2.html'">Ready to Apply</button>       </div>
+   </section>
 
-    .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 20px;
-    }
+   <script>
+       // Application flow management
+       let currentStep = 'hero';
 
-    .hero {
-        background: linear-gradient(135deg, var(--light-gray) 0%, var(--white) 100%);
-        padding: 6rem 0;
-        text-align: center;
-        position: relative;
-        overflow: hidden;
-    }
+       function startApplication() {
+           hideSection('hero');
+           showSection('step1');
+           currentStep = 'step1';
+       }
 
-    .hero::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="%23FF000010" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
-        opacity: 0.3;
-    }
+       function nextStep(step) {
+           hideSection(currentStep);
+           showSection(step);
+           currentStep = step;
+           window.scrollTo({ top: 0, behavior: 'smooth' });
+       }
 
-    .hero-content {
-        position: relative;
-        z-index: 2;
-    }
+       function showSection(sectionId) {
+           const section = document.getElementById(sectionId);
+           if (section) {
+               section.classList.remove('hidden');
+               section.style.animation = 'fadeInUp 0.8s ease-out';
+           }
+       }
 
-    .hero-badge {
-        display: inline-block;
-        background: rgba(255, 0, 0, 0.1);
-        color: var(--youtube-red);
-        padding: 0.5rem 1rem;
-        border-radius: 20px;
-        font-size: 0.9rem;
-        font-weight: 500;
-        margin-bottom: 2rem;
-        animation: fadeInUp 0.8s ease-out;
-    }
+       function hideSection(sectionId) {
+           const section = document.getElementById(sectionId);
+           if (section) {
+               section.classList.add('hidden');
+               section.style.animation = '';
+           }
+       }
 
-    .hero-title {
-        font-size: 4rem;
-        font-weight: 900;
-        color: var(--text-dark);
-        margin-bottom: 1.5rem;
-        line-height: 1.1;
-        animation: fadeInUp 0.8s ease-out 0.2s both;
-    }
+       function goHome() {
+           hideSection('confirmation');
+           hideSection('step1');
+           hideSection('step2');
+           hideSection('step3');
+           hideSection('application');
+           showSection('hero');
+           currentStep = 'hero';
+           window.scrollTo({ top: 0, behavior: 'smooth' });
+       }
 
-    .hero-subtitle {
-        font-size: 1.3rem;
-        color: var(--text-medium);
-        margin-bottom: 3rem;
-        max-width: 600px;
-        margin-left: auto;
-        margin-right: auto;
-        animation: fadeInUp 0.8s ease-out 0.4s both;
-    }
+       // Smooth scrolling for anchor links (only for <a>, not buttons)
+       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+           anchor.addEventListener('click', function (e) {
+               e.preventDefault();
+               const target = document.querySelector(this.getAttribute('href'));
+               if (target) {
+                   target.scrollIntoView({
+                       behavior: 'smooth',
+                       block: 'start'
+                   });
+               }
+           });
+       });
 
-    .hero-cta {
-        display: flex;
-        gap: 1rem;
-        justify-content: center;
-        flex-wrap: wrap;
-        animation: fadeInUp 0.8s ease-out 0.6s both;
-    }
+       // Enhanced animations on scroll
+       const observerOptions = {
+           threshold: 0.1,
+           rootMargin: '0px 0px -50px 0px'
+       };
+       const observer = new IntersectionObserver((entries) => {
+           entries.forEach(entry => {
+               if (entry.isIntersecting) {
+                   entry.target.style.animation = 'fadeInUp 0.8s ease-out';
+               }
+           });
+       }, observerOptions);
+       document.querySelectorAll('section').forEach(section => {
+           observer.observe(section);
+       });
 
-    .btn-primary {
-        background: var(--youtube-red);
-        color: var(--white);
-        padding: 1rem 2rem;
-        border-radius: 30px;
-        text-decoration: none;
-        font-weight: 700;
-        font-size: 1.1rem;
-        transition: all 0.3s ease;
-        border: none;
-        cursor: pointer;
-        position: relative;
-        overflow: hidden;
-    }
+       // Keyboard navigation support
+       document.addEventListener('keydown', function(e) {
+           if (e.key === 'Escape') {
+               if (currentStep !== 'hero') {
+                   goHome();
+               }
+           }
+       });
 
-    .btn-primary::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-        transition: left 0.5s;
-    }
-
-    .btn-primary:hover::before {
-        left: 100%;
-    }
-
-    .btn-primary:hover {
-        background: var(--youtube-dark-red);
-        transform: translateY(-3px);
-        box-shadow: 0 10px 25px rgba(255, 0, 0, 0.3);
-    }
-
-    .btn-secondary {
-        background: transparent;
-        color: var(--text-dark);
-        padding: 1rem 2rem;
-        border: 2px solid var(--medium-gray);
-        border-radius: 30px;
-        text-decoration: none;
-        font-weight: 600;
-        font-size: 1.1rem;
-        transition: all 0.3s ease;
-    }
-
-    .btn-secondary:hover {
-        border-color: var(--youtube-red);
-        color: var(--youtube-red);
-        transform: translateY(-3px);
-        box-shadow: 0 10px 25px var(--shadow-light);
-    }
-
-    @keyframes fadeInUp {
-        from {
-            opacity: 0;
-            transform: translateY(30px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
-    @media (max-width: 768px) {
-        .hero-title {
-            font-size: 2.5rem;
-        }
-        
-        .hero-cta {
-            flex-direction: column;
-            align-items: center;
-        }
-    }
-</style>
-
-
-    <!-- Step 1: Application Process -->
-    <section class="step-section hidden" id="step1Section">
-        <div class="container">
-            <div class="step-content">
-                <div class="step-number">1</div>
-                <h2 class="step-title">Application Review</h2>
-                <p class="step-description">
-                    Welcome to the Editopia Studio application process! First, you'll submit your application with your portfolio and details. 
-                    Our expert team will carefully review your work and experience within 24 hours.
-                </p>
-                <button class="continue-button" onclick="showStep2()">Continue to Next Step →</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Step 2: Sample Task -->
-    <section class="step-section hidden" id="step2Section">
-        <div class="container">
-            <div class="step-content">
-                <div class="step-number">2</div>
-                <h2 class="step-title">Sample Task</h2>
-                <p class="step-description">
-                    If your application stands out, you'll receive a sample editing task. This is your chance to showcase your creativity, 
-                    technical skills, and attention to detail. We'll provide you with raw footage and specific requirements.
-                </p>
-                <button class="continue-button" onclick="showStep3()">Continue to Next Step →</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Step 3: Assessment -->
-    <section class="step-section hidden" id="step3Section">
-        <div class="container">
-            <div class="step-content">
-                <div class="step-number">3</div>
-                <h2 class="step-title">Timed Assessment</h2>
-                <p class="step-description">
-                    You'll have exactly 15 hours and 15 minutes to complete your assessment once you accept it. 
-                    The timer starts immediately when you click "Accept Assessment". Plan your time wisely and showcase your best work!
-                </p>
-                <button class="continue-button" onclick="showStep4()">Continue to Next Step →</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Step 4: Final Decision -->
-    <section class="step-section hidden" id="step4Section">
-        <div class="container">
-            <div class="step-content">
-                <div class="step-number">4</div>
-                <h2 class="step-title">Final Decision</h2>
-                <p class="step-description">
-                    After you submit your completed assessment, our team will evaluate your work. 
-                    We'll notify you of our final decision within 24-48 hours via WhatsApp or email. 
-                    Ready to start this journey?
-                </p>
-                <button class="continue-button" onclick="showApplicationForm()">Start Application Form →</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Application Form Section -->
-    <section class="application-section hidden" id="applicationSection">
-        <div class="container">
-            <h2 class="section-title">📄 Application Form</h2>
-            <p class="section-subtitle">Fill out the form below to begin your journey with Editopia Studio</p>
-            
-            <div class="form-container">
-                <form id="applicationForm">
-                    <div class="form-grid">
-                        <div class="form-group">
-                            <label for="fullName">Full Name *</label>
-                            <input type="text" id="fullName" name="fullName" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="email">Email Address *</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="whatsapp">WhatsApp Number *</label>
-                            <input type="tel" id="whatsapp" name="whatsapp" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="location">Location (City, Country) *</label>
-                            <input type="text" id="location" name="location" placeholder="e.g., New York, USA" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="portfolio">Portfolio Link *</label>
-                            <input type="url" id="portfolio" name="portfolio" placeholder="Google Drive, YouTube, etc." required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="experience">Years of Experience *</label>
-                            <select id="experience" name="experience" required>
-                                <option value="">Select experience level</option>
-                                <option value="0-1">0-1 years</option>
-                                <option value="1-3">1-3 years</option>
-                                <option value="3-5">3-5 years</option>
-                                <option value="5+">5+ years</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group full-width">
-                            <label for="software">Software/Tools Used *</label>
-                            <input type="text" id="software" name="software" placeholder="e.g., Premiere Pro, After Effects, DaVinci Resolve" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="videoType">Best Type of Videos You Edit *</label>
-                            <select id="videoType" name="videoType" required>
-                                <option value="">Select video type</option>
-                                <option value="corporate">Corporate/Business</option>
-                                <option value="social-media">Social Media Content</option>
-                                <option value="youtube">YouTube Videos</option>
-                                <option value="documentary">Documentary</option>
-                                <option value="music-video">Music Videos</option>
-                                <option value="promotional">Promotional Videos</option>
-                                <option value="other">Other</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="pricing">Expected Price for 1-Minute Edited Video *</label>
-                            <input type="text" id="pricing" name="pricing" placeholder="e.g., $50-100" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="availability">Weekly Availability *</label>
-                            <select id="availability" name="availability" required>
-                                <option value="">Select availability</option>
-                                <option value="10-20">10-20 hours/week</option>
-                                <option value="20-30">20-30 hours/week</option>
-                                <option value="30-40">30-40 hours/week</option>
-                                <option value="40+">40+ hours/week</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group full-width">
-                            <label for="motivation">Why Do You Want to Work With Editopia? *</label>
-                            <textarea id="motivation" name="motivation" rows="4" placeholder="Tell us what motivates you..." required></textarea>
-                        </div>
-                    </div>
-                    
-                    <button type="submit" class="submit-button">👉 Submit Application</button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- Confirmation Section -->
-    <section class="confirmation-section hidden" id="confirmationSection">
-        <div class="confirmation-content">
-            <div class="success-icon">✓</div>
-            <h2 class="confirmation-title">Application Submitted!</h2>
-            <p class="confirmation-description">
-                Thank you for applying to Editopia Studio! Your application has been successfully received.
-            </p>
-            
-            <div class="next-steps">
-                <h4>What Happens Next?</h4>
-                <p>Our team will review your application and reply within 24 hours with the next steps. We'll notify you via WhatsApp or email using the contact details you provided.</p>
-            </div>
-            
-            <button class="back-button" onclick="resetApplication()">Submit Another Application</button>
-        </div>
-    </section>
-
-    <script>
-        function startApplication() {
-            document.getElementById('home').classList.add('hidden');
-            document.getElementById('step1Section').classList.remove('hidden');
-            window.scrollTo(0, 0);
-        }
-
-        function showStep2() {
-            document.getElementById('step1Section').classList.add('hidden');
-            document.getElementById('step2Section').classList.remove('hidden');
-            window.scrollTo(0, 0);
-        }
-
-        function showStep3() {
-            document.getElementById('step2Section').classList.add('hidden');
-            document.getElementById('step3Section').classList.remove('hidden');
-            window.scrollTo(0, 0);
-        }
-
-        function showStep4() {
-            document.getElementById('step3Section').classList.add('hidden');
-            document.getElementById('step4Section').classList.remove('hidden');
-            window.scrollTo(0, 0);
-        }
-
-        function showApplicationForm() {
-            document.getElementById('step4Section').classList.add('hidden');
-            document.getElementById('applicationSection').classList.remove('hidden');
-            window.scrollTo(0, 0);
-        }
-
-        function resetApplication() {
-            // Hide all sections
-            document.querySelectorAll('section').forEach(section => {
-                section.classList.add('hidden');
-            });
-            
-            // Show hero section
-            document.getElementById('heroSection').classList.remove('hidden');
-            
-            // Reset form
-            document.getElementById('applicationForm').reset();
-            
-            window.scrollTo(0, 0);
-        }
-
-        // Form submission handler
-        document.getElementById('applicationForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Simulate form submission
-            const submitButton = document.querySelector('.submit-button');
-            submitButton.disabled = true;
-            submitButton.textContent = 'Submitting...';
-            
-            setTimeout(() => {
-                // Hide application section and show confirmation
-                document.getElementById('applicationSection').classList.add('hidden');
-                document.getElementById('confirmationSection').classList.remove('hidden');
-                window.scrollTo(0, 0);
-                
-                // Reset button
-                submitButton.disabled = false;
-                submitButton.textContent = '👉 Submit Application';
-            }, 2000);
-        });
-
-        // Add loading animation to form inputs
-        document.querySelectorAll('input, select, textarea').forEach(input => {
-            input.addEventListener('focus', function() {
-                this.style.transform = 'scale(1.02)';
-            });
-            
-            input.addEventListener('blur', function() {
-                this.style.transform = 'scale(1)';
-            });
-        });
-
-        // Parallax effect for floating shapes
-        window.addEventListener('scroll', function() {
-            const scrolled = window.pageYOffset;
-            const shapes = document.querySelectorAll('.shape');
-            
-            shapes.forEach((shape, index) => {
-                const speed = (index + 1) * 0.1;
-                shape.style.transform = `translateY(${scrolled * speed}px)`;
-            });
-        });
-    </script>
+       // Auto-resize textareas (if any are added in the future)
+       document.querySelectorAll('textarea').forEach(textarea => {
+           textarea.addEventListener('input', function() {
+               this.style.height = 'auto';
+               this.style.height = this.scrollHeight + 'px';
+           });
+       });
+   </script>
 </body>
 </html>
