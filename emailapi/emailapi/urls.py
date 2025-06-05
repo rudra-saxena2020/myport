@@ -28,3 +28,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/submit/', collect_user_info),
 ]
+from django.urls import path, include
+
+urlpatterns = [
+    # Other paths here...
+
+    path('api/', include('api.urls')),  # assuming your app is named 'api'
+]
