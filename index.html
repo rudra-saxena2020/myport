@@ -458,7 +458,7 @@
       </div>
       
       <ul class="hidden md:flex space-x-8 text-sm font-medium text-white/80">
-        <li><a class="hover:text-white transition-colors duration-300 relative group" href="/hiring/Hiring-Page.html">
+        <li><a class="hover:text-white transition-colors duration-300 relative group" href="/hiring/apply.html">
           HELP MORE
           <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-red-500 transition-all duration-300 group-hover:w-full"></span>
         </a></li>
@@ -1220,20 +1220,19 @@
   });
 
   // Mobile menu toggle
-  function toggleMobileMenu() {
-    const mobileMenu = document.querySelector('.mobile-menu');
-    const menuIcon = document.querySelector('.mobile-menu-btn i');
-    
-    mobileMenu.classList.toggle('active');
-    
-    if (mobileMenu.classList.contains('active')) {
-      menuIcon.classList.remove('fa-bars');
-      menuIcon.classList.add('fa-times');
-    } else {
-      menuIcon.classList.remove('fa-times');
-      menuIcon.classList.add('fa-bars');
-    }
-  }
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const mobileMenuClose = document.getElementById('mobile-menu-close');
+
+  mobileMenuButton.addEventListener('click', function() {
+    mobileMenu.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+  });
+
+  mobileMenuClose.addEventListener('click', function() {
+    mobileMenu.classList.add('hidden');
+    document.body.style.overflow = '';
+  });
 
   // Smooth scrolling for navigation links
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
