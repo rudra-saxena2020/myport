@@ -3,35 +3,14 @@ URL configuration for emailapi project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/5.1/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
-from django.urls import path
 
-urlpatterns = [
-    path('admin/', admin.site.urls),
-]
 from django.contrib import admin
-from django.urls import path
-from api.views import collect_user_info
-
-urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('api/submit/', collect_user_info),
-]
 from django.urls import path, include
+from api.views import collect_user_info  # Your custom view
 
 urlpatterns = [
-    # Other paths here...
-
-    path('api/', include('api.urls')),  # assuming your app is named 'api'
+    path('admin/', admin.site.urls),  # Admin panel
+    path('api/submit/', collect_user_info),  # Custom API view
+    path('api/', include('api.urls')),  # Additional API routes from api/urls.py
 ]

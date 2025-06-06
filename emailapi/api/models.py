@@ -7,13 +7,15 @@ class UserInfo(models.Model):
     location = models.CharField(max_length=255)
     portfolio_link = models.URLField()
     years_of_experience = models.PositiveIntegerField()
-    experience_level = models.CharField(max_length=50)  # Dropdown, can use choices
+    experience_level = models.CharField(max_length=50)
     software_tools_used = models.CharField(max_length=255)
-    best_video_type = models.CharField(max_length=100)  # Dropdown
+    best_video_type = models.CharField(max_length=100)
     expected_price = models.CharField(max_length=50)
-    weekly_availability = models.CharField(max_length=50)  # Dropdown
+    weekly_availability = models.CharField(max_length=50)
     reason_to_join = models.TextField()
+    resume = models.FileField(upload_to='resumes/', null=True, blank=True)  # ADD THIS
     created_at = models.DateTimeField(auto_now_add=True)
+
 
     def __str__(self):
         return self.full_name
