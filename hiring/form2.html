@@ -34,7 +34,7 @@
         <div class="nav-logo-img">
           <img
             id="navbar-logo"
-            src="/images/1000187931.png"
+            src="/myport/images/1000187931.png"
             alt="Editopia Studio Logo"
             style="
               width: 100%;
@@ -69,7 +69,7 @@
             <div class="nav-logo-img1">
               <img
                 id="application-logo"
-                src="/images/1000187931.png"
+                src="/myport/images/1000187931.png"
                 alt="Editopia Studio Logo"
                 style="
                   width: 50%;
@@ -348,6 +348,364 @@
       </div>
     </section>
 
-    <script src="form2.js"></script>
+    <script>
+      // Enhanced JavaScript functionality
+      let currentTheme = localStorage.getItem("theme") || "light";
+      let formData = {};
+      let totalFields = 11; // Total required fields
+
+      // Initialize theme
+      document.documentElement.setAttribute("data-theme", currentTheme);
+      updateThemeIcon();
+
+      // Navbar scroll effect
+      window.addEventListener("scroll", () => {
+        const navbar = document.getElementById("navbar");
+        if (window.scrollY > 50) {
+          navbar.classList.add("scrolled");
+        } else {
+          navbar.classList.remove("scrolled");
+        }
+      });
+
+      // Theme toggle
+      function toggleTheme() {
+        currentTheme = currentTheme === "light" ? "dark" : "light";
+        document.documentElement.setAttribute("data-theme", currentTheme);
+        localStorage.setItem("theme", currentTheme);
+        updateThemeIcon();
+      }
+
+      function updateLogosForTheme() {
+        const theme = currentTheme;
+        // Set your logo paths here
+        const lightLogo = "/myport/images/Editopia studio.png";
+        const darkLogo = "/myport/images/3.png"; // <-- Use your dark logo file
+
+        // Navbar logo
+        const navbarLogo = document.getElementById("");
+        if (navbarLogo) {
+          navbarLogo.src = theme === "dark" ? darkLogo : lightLogo;
+        }
+        // Application logo
+        const applicationLogo = document.getElementById("application-logo");
+        if (applicationLogo) {
+          applicationLogo.src = theme === "dark" ? darkLogo : lightLogo;
+        }
+      }
+
+      function updateThemeIcon() {
+        const icon = document.getElementById("theme-icon");
+        icon.textContent = currentTheme === "light" ? "🌙" : "☀️";
+        updateLogosForTheme();
+      }
+
+      // Back button functionality
+      function goBack() {
+        window.history.back();
+      }
+
+      // Enhanced form validation
+      function validateField(field) {
+        const value = field.value.trim();
+        const fieldName = field.name;
+        let isValid = true;
+        let message = "";
+
+        // Clear previous validation
+        field.classList.remove("valid", "invalid");
+
+        // Required field validation
+        if (field.required && !value) {
+          isValid = false;
+          message = "This field is required";
+        }
+
+        // Specific field validations
+        switch (fieldName) {
+          case "firstName":
+          case "lastName":
+            if (value && value.length < 2) {
+              isValid = false;
+              message = "Name must be at least 2 characters long";
+            }
+            break;
+
+          case "email":
+            if (value && !isValidEmail(value)) {
+              isValid = false;
+              message = "Please enter a valid email address";
+            }
+            break;
+
+          case "phone":
+            if (value && !isValidPhone(value)) {
+              isValid = false;
+              message = "Please enter a valid phone number";
+            }
+            break;
+
+          case "portfolio":
+            if (value && !isValidURL(value)) {
+              isValid = false;
+              message = "Please enter a valid URL";
+            }
+            break;
+
+          case "experience-description":
+          case "why-join":
+            if (value && value.length < 50) {
+              isValid = false;
+              message = "Please provide at least 50 characters";
+            }
+            break;
+
+          case "resume":
+            if (field.files.length > 0) {
+              const file = field.files[0];
+              const allowedTypes = [
+                "application/pdf",
+                "application/msword",
+                "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+              ];
+              const maxSize = 5 * 1024 * 1024; // 5MB
+
+              if (!allowedTypes.includes(file.type)) {
+                isValid = false;
+                message = "Please upload a PDF, DOC, or DOCX file";
+              } else if (file.size > maxSize) {
+                isValid = false;
+                message = "File size must be less than 5MB";
+              }
+            }
+            break;
+        }
+
+        // Update field appearance
+        if (isValid && value) {
+          field.classList.add("valid");
+        } else if (!isValid) {
+          field.classList.add("invalid");
+        }
+
+        // Show/hide validation message
+        const messageElement = field.parentNode.querySelector(
+          ".validation-message"
+        );
+        if (messageElement) {
+          messageElement.textContent = message;
+          messageElement.classList.toggle("show", !isValid);
+        }
+
+        updateProgress();
+        return isValid;
+      }
+
+      // Validation helper functions
+      function isValidEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+      }
+
+      function isValidPhone(phone) {
+        const phoneRegex = /^[\+]?[\d\s\-\(\)]{10,}$/;
+        return phoneRegex.test(phone);
+      }
+
+      function isValidURL(url) {
+        try {
+          new URL(url);
+          return true;
+        } catch {
+          return false;
+        }
+      }
+
+      // Progress tracking
+      function updateProgress() {
+        const requiredFields = document.querySelectorAll(
+          "input[required], select[required], textarea[required]"
+        );
+        let completedFields = 0;
+
+        requiredFields.forEach((field) => {
+          if (field.value.trim() && !field.classList.contains("invalid")) {
+            completedFields++;
+          }
+        });
+
+        const progress = Math.round((completedFields / totalFields) * 100);
+        document.getElementById("progressFill").style.width = progress + "%";
+        document.getElementById(
+          "progressText"
+        ).textContent = `Complete your application (${progress}% done)`;
+      }
+
+      // Form submission
+      async function handleSubmit(event) {
+        event.preventDefault();
+
+        const form = event.target;
+        const formData = new FormData(form);
+        const submitButton = document.getElementById("submitButton");
+        const submitText = document.getElementById("submitText");
+
+        // Validate all fields
+        let isFormValid = true;
+        const inputs = form.querySelectorAll("input, select, textarea");
+
+        inputs.forEach((input) => {
+          if (!validateField(input)) {
+            isFormValid = false;
+          }
+        });
+
+        if (!isFormValid) {
+          // Scroll to first invalid field
+          const firstInvalid = form.querySelector(".invalid");
+          if (firstInvalid) {
+            firstInvalid.scrollIntoView({
+              behavior: "smooth",
+              block: "center",
+            });
+            firstInvalid.focus();
+          }
+          return;
+        }
+
+        // Show loading state
+        submitButton.classList.add("loading");
+        submitButton.disabled = true;
+        submitText.textContent = "Submitting...";
+
+        try {
+          // Simulate API call
+          await new Promise((resolve) => setTimeout(resolve, 2000));
+
+          // Redirect to confirmation page
+          window.location.href = "/myport/hiring/confirmation.html";
+
+          // Optionally clear draft
+          clearDraft();
+        } catch (error) {
+          console.error("Submission error:", error);
+          alert(
+            "There was an error submitting your application. Please try again."
+          );
+        } finally {
+          // Reset button state (in case of error)
+          submitButton.classList.remove("loading");
+          submitButton.disabled = false;
+          submitText.textContent = "Submit Application";
+        }
+      }
+
+      // File upload enhancement
+      document
+        .getElementById("resume")
+        .addEventListener("change", function (e) {
+          const label = this.parentNode.querySelector(".file-upload-text");
+          const file = e.target.files[0];
+
+          if (file) {
+            label.innerHTML = `
+                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" style="margin-bottom: 8px;">
+                       <path d="M14 3V7C14 7.26522 14.1054 7.51957 14.2929 7.70711C14.4804 7.89464 14.7348 8 15 8H19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                       <path d="M14 3L19 8V19C19 19.5304 18.7893 20.0391 18.4142 20.4142C18.0391 20.7893 17.5304 21 17 21H7C6.46957 21 5.96086 20.7893 5.58579 20.4142C5.21071 20.0391 5 19.5304 5 19V5C5 4.46957 5.21071 3.96086 5.58579 3.58579C5.96086 3.21071 6.46957 3 7 3H14Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                   </svg>
+                   <div style="color: #4CAF50; font-weight: 600;">${file.name}</div>
+                   <small style="color: var(--text-muted); margin-top: 4px;">File selected successfully</small>
+               `;
+          }
+        });
+
+      // Initialize progress on page load
+      document.addEventListener("DOMContentLoaded", function () {
+        updateProgress();
+
+        // Add input listeners for real-time progress updates
+        const inputs = document.querySelectorAll("input, select, textarea");
+        inputs.forEach((input) => {
+          input.addEventListener("input", updateProgress);
+          input.addEventListener("change", updateProgress);
+        });
+      });
+
+      // Keyboard shortcuts
+      document.addEventListener("keydown", function (e) {
+        // Ctrl/Cmd + Enter to submit form
+        if ((e.ctrlKey || e.metaKey) && e.key === "Enter") {
+          const form = document.getElementById("applicationForm");
+          if (form) {
+            form.dispatchEvent(new Event("submit"));
+          }
+        }
+
+        // Escape to close modal
+        if (e.key === "Escape") {
+          const modal = document.getElementById("successModal");
+          if (modal.classList.contains("show")) {
+            closeModal();
+          }
+        }
+      });
+
+      // Smooth scrolling for better UX
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
+        });
+      });
+
+      // Auto-save draft (optional - stores in localStorage)
+      function saveDraft() {
+        const form = document.getElementById("applicationForm");
+        const formData = new FormData(form);
+        const draft = {};
+
+        for (let [key, value] of formData.entries()) {
+          draft[key] = value;
+        }
+
+        localStorage.setItem("applicationDraft", JSON.stringify(draft));
+      }
+
+      // Load draft on page load
+      function loadDraft() {
+        const draft = localStorage.getItem("applicationDraft");
+        if (draft) {
+          try {
+            const data = JSON.parse(draft);
+            Object.keys(data).forEach((key) => {
+              const field = document.querySelector(`[name="${key}"]`);
+              if (field && field.type !== "file") {
+                field.value = data[key];
+              }
+            });
+            updateProgress();
+          } catch (e) {
+            console.log("Error loading draft:", e);
+          }
+        }
+      }
+
+      // Auto-save every 30 seconds
+      setInterval(saveDraft, 30000);
+
+      // Load draft on page load
+      window.addEventListener("load", loadDraft);
+
+      // Clear draft on successful submission
+      function clearDraft() {
+        localStorage.removeItem("applicationDraft");
+      }
+    </script>
   </body>
 </html>
