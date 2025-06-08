@@ -1,4 +1,4 @@
-let currentTheme = localStorage.getItem("theme") || "light";
+let currentTheme = "light"; // Note: localStorage not available in artifacts
 let formData = {};
 let totalFields = 13; // Updated required field count
 
@@ -25,7 +25,7 @@ window.addEventListener("scroll", () => {
 function toggleTheme() {
   currentTheme = currentTheme === "light" ? "dark" : "light";
   document.documentElement.setAttribute("data-theme", currentTheme);
-  localStorage.setItem("theme", currentTheme);
+  // localStorage.setItem("theme", currentTheme); // Not available in artifacts
   updateThemeIcon();
 }
 
@@ -38,6 +38,44 @@ function goBack() {
   window.history.back();
 }
 
+// New function to handle file upload display
+function handleFileUpload(input) {
+  const fileUploadLabel = input.parentNode.querySelector(".file-upload-label");
+  const fileUploadText = fileUploadLabel.querySelector(".file-upload-text");
+
+  if (input.files && input.files[0]) {
+    const file = input.files[0];
+    const fileName = file.name;
+    const fileSize = (file.size / 1024 / 1024).toFixed(2); // Convert to MB
+
+    // Update the display to show the selected file
+    fileUploadText.innerHTML = `
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" style="margin-bottom: 8px; color: var(--primary-color);">
+        <path d="M14 3V7C14 7.26522 14.1054 7.51957 14.2929 7.70711C14.4804 7.89464 14.7348 8 15 8H19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M14 3L19 8V19C19 19.5304 18.7893 20.0391 18.4142 20.4142C18.0391 20.7893 17.5304 21 17 21H7C6.46957 21 5.96086 20.7893 5.58579 20.4142C5.21071 20.0391 5 19.5304 5 19V5C5 4.46957 5.21071 3.96086 5.58579 3.58579C5.96086 3.21071 6.46957 3 7 3H14Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M9 12L11 14L15 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <div style="color: var(--primary-color); font-weight: 500;">${fileName}</div>
+      <small style="color: var(--text-muted); margin-top: 4px">${fileSize} MB • Click to change</small>
+    `;
+
+    // Add a class to indicate file is selected
+    fileUploadLabel.classList.add("file-selected");
+  } else {
+    // Reset to original state if no file is selected
+    fileUploadText.innerHTML = `
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" style="margin-bottom: 8px">
+        <path d="M14 3V7C14 7.26522 14.1054 7.51957 14.2929 7.70711C14.4804 7.89464 14.7348 8 15 8H19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M14 3L19 8V19C19 19.5304 18.7893 20.0391 18.4142 20.4142C18.0391 20.7893 17.5304 21 17 21H7C6.46957 21 5.96086 20.7893 5.58579 20.4142C5.21071 20.0391 5 19.5304 5 19V5C5 4.46957 5.21071 3.96086 5.58579 3.58579C5.96086 3.21071 6.46957 3 7 3H14Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <div>Drop your resume here or click to browse</div>
+      <small style="color: var(--text-muted); margin-top: 4px">PDF, DOC, or DOCX (Max 5MB)</small>
+    `;
+
+    fileUploadLabel.classList.remove("file-selected");
+  }
+}
+
 function validateField(field) {
   const value = field.value.trim();
   const fieldName = field.name;
@@ -46,45 +84,70 @@ function validateField(field) {
 
   field.classList.remove("valid", "invalid");
 
-  if (field.required && !value) {
-    isValid = false;
-    message = "This field is required";
+  // Handle file input separately
+  if (field.type === "file") {
+    handleFileUpload(field);
+
+    if (field.files && field.files[0]) {
+      const file = field.files[0];
+      // Check file size (5MB limit)
+      if (file.size > 5 * 1024 * 1024) {
+        isValid = false;
+        message = "File size must be less than 5MB";
+      }
+      // Check file type
+      const allowedTypes = [".pdf", ".doc", ".docx"];
+      const fileExtension = "." + file.name.split(".").pop().toLowerCase();
+      if (!allowedTypes.includes(fileExtension)) {
+        isValid = false;
+        message = "Only PDF, DOC, and DOCX files are allowed";
+      }
+    }
+  } else {
+    // Rest of your existing validation logic for other fields
+    if (field.required && !value) {
+      isValid = false;
+      message = "This field is required";
+    }
+
+    switch (fieldName) {
+      case "email":
+        if (value && !isValidEmail(value)) {
+          isValid = false;
+          message = "Please enter a valid email address";
+        }
+        break;
+      case "phone":
+        if (value && !isValidPhone(value)) {
+          isValid = false;
+          message = "Please enter a valid phone number";
+        }
+        break;
+      case "portfolio":
+        if (value && !isValidURL(value)) {
+          isValid = false;
+          message = "Please enter a valid URL";
+        }
+        break;
+      case "why-join":
+        if (value && value.length < 50) {
+          isValid = false;
+          message = "Please provide at least 50 characters";
+        }
+        break;
+      case "experience-description":
+        if (value && value.length < 50) {
+          isValid = false;
+          message = "Please provide at least 50 characters";
+        }
+        break;
+    }
   }
 
-  switch (fieldName) {
-    case "email":
-      if (value && !isValidEmail(value)) {
-        isValid = false;
-        message = "Please enter a valid email address";
-      }
-      break;
-    case "phone":
-      if (value && !isValidPhone(value)) {
-        isValid = false;
-        message = "Please enter a valid phone number";
-      }
-      break;
-    case "portfolio":
-      if (value && !isValidURL(value)) {
-        isValid = false;
-        message = "Please enter a valid URL";
-      }
-      break;
-    case "why-join":
-      if (value && value.length < 50) {
-        isValid = false;
-        message = "Please provide at least 50 characters";
-      }
-      break;
-    case "experience-description":
-      if (value && isNaN(parseInt(value))) {
-        isValid = false;
-        message = "Please enter a numeric value";
-      }
-      break;
-  }
-
-  if (isValid && value) {
+  if (
+    isValid &&
+    (value || (field.type === "file" && field.files && field.files[0]))
+  ) {
     field.classList.add("valid");
   } else if (!isValid) {
     field.classList.add("invalid");
@@ -240,12 +303,14 @@ async function handleSubmit(event) {
   );
 
   // Parse and send numeric years_of_experience
-  const experienceValue = parseInt(
-    form.querySelector('[name="experience-description"]').value.trim()
-  );
   formDataObj.set(
     "years_of_experience",
-    isNaN(experienceValue) ? "0" : experienceValue.toString()
+    form.querySelector('[name="experience-description"]').value.trim()
+  );
+
+  formDataObj.set(
+    "best_video_type",
+    form.querySelector('[name="specialization"]').value.trim()
   );
 
   // Add missing backend-required fields
@@ -254,52 +319,40 @@ async function handleSubmit(event) {
   if (!formDataObj.has("expected_price"))
     formDataObj.append("expected_price", "negotiable");
 
+  formDataObj.set(
+    "additional_info",
+    form.querySelector('[name="additional-info"]').value.trim()
+  );
+
   // Show loading state
   submitButton.classList.add("loading");
   submitButton.disabled = true;
   submitText.textContent = "Submitting...";
 
   try {
-    console.log("Starting form submission...");
+    // Send data to backend
+    const result = await sendToBackend(formDataObj);
 
-    const response = await sendToBackend(formDataObj);
+    // Success handling
+    console.log("Form submitted successfully:", result);
 
-    console.log("Form submitted successfully:", response);
+    // Show success message
+    showSuccessMessage("Application submitted successfully!");
 
-    // Check if we have a success message
-    if (response && (response.message || typeof response === "string")) {
-      // Success! Redirect to confirmation page
-      window.location.href = "confirmation.html";
-      clearDraft();
-    } else {
-      // Unexpected response format
-      console.warn("Unexpected response format:", response);
-      alert(
-        "Form submitted but received unexpected response. Please contact support if needed."
-      );
-    }
+    // Clear form or redirect
+    clearDraft();
+
+    // Optional: Reset form
+    // form.reset();
+    // updateProgress();
+
+    // Optional: Redirect to success page
+    // window.location.href = "/success";
   } catch (error) {
-    console.error("Submission error:", error);
+    console.error("Form submission error:", error);
 
-    // More user-friendly error messages
-    let errorMessage = "There was an error submitting your application.";
-
-    if (error.message) {
-      if (error.message.includes("Failed to fetch")) {
-        errorMessage =
-          "Network error: Please check your internet connection and try again.";
-      } else if (error.message.includes("HTTP 400")) {
-        errorMessage =
-          "Invalid form data. Please check your inputs and try again.";
-      } else if (error.message.includes("HTTP 500")) {
-        errorMessage =
-          "Server error. Please try again later or contact support.";
-      } else {
-        errorMessage = `Error: ${error.message}`;
-      }
-    }
-
-    alert(errorMessage);
+    // Show error message to user
+    showErrorMessage("Failed to submit application. Please try again.");
   } finally {
     // Reset button state
     submitButton.classList.remove("loading");
@@ -307,3 +360,112 @@ async function handleSubmit(event) {
     submitText.textContent = "Submit Application";
   }
 }
+
+// Utility functions for showing messages
+function showSuccessMessage(message) {
+  // Create or show success notification
+  const notification = createNotification(message, "success");
+  document.body.appendChild(notification);
+
+  // Auto-remove after 5 seconds
+  setTimeout(() => {
+    if (notification.parentNode) {
+      notification.parentNode.removeChild(notification);
+    }
+  }, 5000);
+}
+
+function showErrorMessage(message) {
+  // Create or show error notification
+  const notification = createNotification(message, "error");
+  document.body.appendChild(notification);
+
+  // Auto-remove after 5 seconds
+  setTimeout(() => {
+    if (notification.parentNode) {
+      notification.parentNode.removeChild(notification);
+    }
+  }, 5000);
+}
+
+function createNotification(message, type) {
+  const notification = document.createElement("div");
+  notification.className = `notification notification-${type}`;
+  notification.style.cssText = `
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px 20px;
+    border-radius: 8px;
+    color: white;
+    font-weight: 500;
+    z-index: 10000;
+    animation: slideIn 0.3s ease-out;
+    max-width: 300px;
+    word-wrap: break-word;
+    ${
+      type === "success"
+        ? "background-color: #10b981;"
+        : "background-color: #ef4444;"
+    }
+  `;
+  notification.textContent = message;
+
+  // Add click to dismiss
+  notification.addEventListener("click", () => {
+    if (notification.parentNode) {
+      notification.parentNode.removeChild(notification);
+    }
+  });
+
+  return notification;
+}
+
+// Add CSS animation for notifications
+const style = document.createElement("style");
+style.textContent = `
+  @keyframes slideIn {
+    from {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  .notification {
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  .notification:hover {
+    opacity: 0.9;
+  }
+`;
+document.head.appendChild(style);
+
+// Initialize form validation on page load
+document.addEventListener("DOMContentLoaded", function () {
+  // Add event listeners to all form inputs
+  const inputs = document.querySelectorAll("input, select, textarea");
+  inputs.forEach((input) => {
+    input.addEventListener("blur", () => validateField(input));
+    input.addEventListener("input", () => validateField(input));
+
+    // Special handling for file inputs
+    if (input.type === "file") {
+      input.addEventListener("change", () => validateField(input));
+    }
+  });
+
+  // Initialize progress
+  updateProgress();
+
+  // Add form submit handler
+  const form = document.querySelector("form");
+  if (form) {
+    form.addEventListener("submit", handleSubmit);
+  }
+});

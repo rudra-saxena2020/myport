@@ -22,8 +22,7 @@
   --shadow-xl: 0 35px 70px rgba(0, 0, 0, 0.2);
 
   /* Logo paths for light theme */
-  --logo-navbar: url("/images/1000187931.png");
-  --logo-application: url("/images/1000187931.png");
+  --logo-application: url("/images/Editopia\ studio.png");
 }
 
 [data-theme="dark"] {
@@ -36,7 +35,6 @@
   --glassmorphism: rgba(0, 0, 0, 0.3);
 
   /* Logo paths for dark theme */
-  --logo-navbar: url("/images/3.png");
   --logo-application: url("/images/3.png");
 }
 
