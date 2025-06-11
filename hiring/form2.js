@@ -336,18 +336,12 @@ async function handleSubmit(event) {
     // Success handling
     console.log("Form submitted successfully:", result);
 
-    // Show success message
-    showSuccessMessage("Application submitted successfully!");
-
     // Clear form or redirect
     clearDraft();
 
-    // Optional: Reset form
-    // form.reset();
-    // updateProgress();
+    // Redirect to confirmation page
+    window.location.href = "confirmation.html";
 
-    // Optional: Redirect to success page
-    // window.location.href = "/success";
   } catch (error) {
     console.error("Form submission error:", error);
 
@@ -361,20 +355,7 @@ async function handleSubmit(event) {
   }
 }
 
-// Utility functions for showing messages
-function showSuccessMessage(message) {
-  // Create or show success notification
-  const notification = createNotification(message, "success");
-  document.body.appendChild(notification);
-
-  // Auto-remove after 5 seconds
-  setTimeout(() => {
-    if (notification.parentNode) {
-      notification.parentNode.removeChild(notification);
-    }
-  }, 5000);
-}
-
+// Utility function for showing error messages only
 function showErrorMessage(message) {
   // Create or show error notification
   const notification = createNotification(message, "error");
@@ -403,11 +384,7 @@ function createNotification(message, type) {
     animation: slideIn 0.3s ease-out;
     max-width: 300px;
     word-wrap: break-word;
-    ${
-      type === "success"
-        ? "background-color: #10b981;"
-        : "background-color: #ef4444;"
-    }
+    background-color: #ef4444;
   `;
   notification.textContent = message;
 
