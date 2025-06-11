@@ -1178,7 +1178,7 @@
 <nav class="navbar">
     <div class="logo">
         <!-- White back arrow button for navigation -->
-       <button class="back-button" onclick="window.location.href='/index.html'" aria-label="Back">
+        <button class="back-button" onclick="goHome()" aria-label="Back">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
                 <path d="M15.5 19L9.5 12L15.5 5" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
@@ -1281,17 +1281,22 @@
            }
        }
 
-       function goHome() {
-           hideSection('confirmation');
-           hideSection('step1');
-           hideSection('step2');
-           hideSection('step3');
-           hideSection('application');
-           showSection('hero');
-           currentStep = 'hero';
-           window.scrollTo({ top: 0, behavior: 'smooth' });
-       }
-
+      function goHome() {
+    // If we're already at hero, go to index.html
+    // If we're in any step, go back to hero first
+    if (currentStep === 'hero') {
+        window.location.href = '/index.html';
+    } else {
+        hideSection('confirmation');
+        hideSection('step1');
+        hideSection('step2');
+        hideSection('step3');
+        hideSection('application');
+        showSection('hero');
+        currentStep = 'hero';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+}
        // Smooth scrolling for anchor links (only for <a>, not buttons)
        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
            anchor.addEventListener('click', function (e) {
