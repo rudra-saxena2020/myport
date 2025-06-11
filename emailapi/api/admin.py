@@ -2,6 +2,8 @@ from django.contrib import admin
 from django.http import HttpResponse
 import openpyxl
 from .models import UserInfo
+from django.utils import timezone
+
 
 # Excel export action
 @admin.action(description='Export Selected to Excel')
@@ -49,7 +51,8 @@ def export_to_excel(modeladmin, request, queryset):
             user.reason_to_join,
             user.resume.url if user.resume else '',  # This will be converted to hyperlink below
             user.additional_info or '',  # Handle null values
-            user.created_at.strftime("%Y-%m-%d %H:%M:%S")
+            timezone.localtime(user.created_at).strftime("%Y-%m-%d %I:%M %p")
+
         ])
     
     # Convert URLs to clickable hyperlinks
