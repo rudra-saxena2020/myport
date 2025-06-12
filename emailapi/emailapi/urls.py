@@ -9,11 +9,11 @@ from django.conf.urls.static import static
 
 from django.contrib import admin
 from django.urls import path, include
-from api.views import collect_user_info  # Your custom view
+# from api.views import collect_user_info  # Your custom view
 
 urlpatterns = [
     path('admin/', admin.site.urls),  # Admin panel
-    path('api/submit/', collect_user_info),  # Custom API view
+    # path('api/submit/', collect_user_info),  # Custom API view
     path('api/', include('api.urls')),  # Additional API routes from api/urls.py
 ]
 if settings.DEBUG:
