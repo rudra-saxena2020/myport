@@ -53,6 +53,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     "whitenoise.middleware.WhiteNoiseMiddleware",  # ✅ Comma added
     'django.middleware.security.SecurityMiddleware',
     'corsheaders.middleware.CorsMiddleware',
