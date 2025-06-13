@@ -5,7 +5,11 @@ from rest_framework import status
 from .serializers import UserInfoSerializer
 from django.core.mail import send_mail
 from django.conf import settings
+from django.views.decorators.csrf import csrf_exempt
+from django.utils.decorators import method_decorator
 
+
+@method_decorator(csrf_exempt, name='dispatch')
 class UserInfoCreateView(APIView):
     def post(self, request):
         serializer = UserInfoSerializer(data=request.data)
