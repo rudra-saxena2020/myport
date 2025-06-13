@@ -3,7 +3,8 @@ let formData = {};
 let totalFields = 13; // Updated required field count
 
 // API Configuration
-const API_BASE_URL = "http://127.0.0.1:8000/api";
+// const API_BASE_URL = "http://127.0.0.1:8000/api";
+const API_BASE_URL = "https://myport-8td5.onrender.com";
 const API_ENDPOINTS = {
   userinfo: `${API_BASE_URL}/userinfo/`,
 };
@@ -341,7 +342,6 @@ async function handleSubmit(event) {
 
     // Redirect to confirmation page
     window.location.href = "confirmation.html";
-
   } catch (error) {
     console.error("Form submission error:", error);
 
