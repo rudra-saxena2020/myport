@@ -3,6 +3,7 @@ from django.http import HttpResponse
 import openpyxl
 from .models import UserInfo
 from django.utils import timezone
+from storages.backends.s3boto3 import S3Boto3Storage
 
 
 # Excel export action
@@ -110,3 +111,11 @@ class UserInfoAdmin(admin.ModelAdmin):
     search_fields = ('full_name', 'email', 'location')
     ordering = ('-id',)
     actions = [export_to_excel]
+   
+
+def get_signed_resume_url(resume_field):
+    if not resume_field:
+        return None
+
+    storage = S3Boto3Storage()
+    return storage.url(resume_field.name)  # returns a signed URL with expiry

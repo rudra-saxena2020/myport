@@ -11,6 +11,10 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+import os
+
+from dotenv import load_dotenv
+load_dotenv() 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -140,3 +144,19 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'harsh40601@gmail.com'
 EMAIL_HOST_PASSWORD = 'iein zvtx pjxv epcv'
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+
+INSTALLED_APPS += ['storages']
+
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+AWS_ACCESS_KEY_ID = os.getenv("AWS_ACCESS_KEY_ID")
+AWS_SECRET_ACCESS_KEY = os.getenv("AWS_SECRET_ACCESS_KEY")
+AWS_STORAGE_BUCKET_NAME = os.getenv("AWS_STORAGE_BUCKET_NAME")
+AWS_S3_ENDPOINT_URL = 'https://s3.us-west-002.backblazeb2.com'  # adjust to your B2 endpoint
+AWS_S3_REGION_NAME = 'us-west-002'  # or your bucket region
+
+# Important for private access + signed URLs
+AWS_QUERYSTRING_AUTH = True
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL = None
